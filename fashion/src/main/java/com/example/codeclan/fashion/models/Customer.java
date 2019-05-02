@@ -16,8 +16,8 @@ public class Customer implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "first_name")
-    private String name;
+    @Column(name = "firstName")
+    private String firstName;
 
     @Column(name = "surname")
     private String surname;
@@ -39,8 +39,8 @@ public class Customer implements Serializable {
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     private List<Booking> bookings;
 
-    public Customer(String name, String surname, String address, String contact, String gender, Float bill) {
-        this.name = name;
+    public Customer(String firstName, String surname, String address, String contact, String gender, Float bill) {
+        this.firstName = firstName;
         this.surname = surname;
         this.address = address;
         this.contact = contact;
@@ -59,12 +59,12 @@ public class Customer implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getSurname() {
