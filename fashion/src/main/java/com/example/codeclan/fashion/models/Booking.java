@@ -53,8 +53,8 @@ public class Booking implements Serializable {
         this.style = style;
         this.customer = customer;
         this.measurement = measurement;
-        this.totalCost = totalCost;
         this.tailor = tailor;
+        this.totalCost = totalCost;
         this.fabrics = new ArrayList<>();
     }
 
@@ -127,6 +127,14 @@ public class Booking implements Serializable {
 
     public List<Fabric> getFabrics() {
         return fabrics;
+    }
+
+    public void addFabrics(Fabric fabric) {
+        this.fabrics.add(fabric);
+    }
+
+    public void removeFabrics(Fabric fabric) {
+        this.fabrics.remove(fabric);
     }
 
 }

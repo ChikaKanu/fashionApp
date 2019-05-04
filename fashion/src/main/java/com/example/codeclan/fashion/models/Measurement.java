@@ -221,17 +221,13 @@ public class Measurement implements Serializable {
         return shoulderToWaistBack;
     }
 
-    public void setShoulderToWaistBack(Float shoulderToWaistBack) {
-        this.shoulderToWaistBack = shoulderToWaistBack;
-    }
+    public void setShoulderToWaistBack(Float shoulderToWaistBack) { this.shoulderToWaistBack = shoulderToWaistBack; }
 
     public Float getBackWidth() {
         return backWidth;
     }
 
-    public void setBackWidth(Float backWidth) {
-        this.backWidth = backWidth;
-    }
+    public void setBackWidth(Float backWidth) { this.backWidth = backWidth; }
 
     public Float getHipHeight() {
         return hipHeight;
@@ -253,9 +249,7 @@ public class Measurement implements Serializable {
         return calf;
     }
 
-    public void setCalf(Float calf) {
-        this.calf = calf;
-    }
+    public void setCalf(Float calf) { this.calf = calf; }
 
     public Float getLegLength() {
         return legLength;
@@ -295,5 +289,13 @@ public class Measurement implements Serializable {
 
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
+    }
+
+    public void addBooking(Booking booking) {
+        this.bookings.add(booking);
+    }
+
+    public void removeBooking(Booking booking) {
+        this.bookings.remove(booking);
     }
 }

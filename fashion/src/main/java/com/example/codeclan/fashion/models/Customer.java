@@ -50,7 +50,9 @@ public class Customer implements Serializable {
     }
 
     public Customer() {
-    };
+    }
+
+    ;
 
     public Long getId() {
         return id;
@@ -113,15 +115,19 @@ public class Customer implements Serializable {
         for (Booking booking : this.bookings) {
             customerBill += booking.getTotalCost();
         }
-       this.bill = customerBill;
+        this.bill = customerBill;
     }
 
     public Double getBill() {
         return bill;
     }
 
+    public void addBooking(Booking booking) {
+        this.bookings.add(booking);
+    }
 
-
+    public void removeBooking(Booking booking) {
+        this.bookings.remove(booking);
+    }
 
 }
-
