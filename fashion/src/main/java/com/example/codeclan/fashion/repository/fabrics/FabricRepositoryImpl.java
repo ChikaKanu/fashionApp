@@ -1,12 +1,11 @@
-package com.example.codeclan.fashion.repository.tailors;
+package com.example.codeclan.fashion.repository.fabrics;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
 
-public class TailorRepositoryImpl implements TailorRepositoryCustom {
+public class FabricRepositoryImpl implements FabricRepositoryCustom{
 
     @Autowired
     EntityManager entityManager;
-
 }
