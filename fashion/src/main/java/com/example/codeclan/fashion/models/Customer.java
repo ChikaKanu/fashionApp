@@ -32,14 +32,14 @@ public class Customer implements Serializable {
     private String gender;
 
     @Column(name = "bill")
-    private Float bill;
+    private Double bill;
 
     @JsonIgnoreProperties("bookings")
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     private List<Booking> bookings;
 
-    public Customer(String firstName, String surname, String address, String contact, String gender, Float bill) {
+    public Customer(String firstName, String surname, String address, String contact, String gender) {
         this.firstName = firstName;
         this.surname = surname;
         this.address = address;
@@ -49,7 +49,8 @@ public class Customer implements Serializable {
         this.bookings = new ArrayList<>();
     }
 
-    public Customer(){};
+    public Customer() {
+    };
 
     public Long getId() {
         return id;
@@ -99,14 +100,6 @@ public class Customer implements Serializable {
         this.gender = gender;
     }
 
-    public Float getBill() {
-        return bill;
-    }
-
-    public void setBill(Float bill) {
-        this.bill = bill;
-    }
-
     public List<Booking> getBookings() {
         return bookings;
     }
@@ -114,4 +107,21 @@ public class Customer implements Serializable {
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
     }
+
+    public void setBill() {
+        Double customerBill = 0.00;
+        for (Booking booking : this.bookings) {
+            customerBill += booking.getTotalCost();
+        }
+       this.bill = customerBill;
+    }
+
+    public Double getBill() {
+        return bill;
+    }
+
+
+
+
 }
+

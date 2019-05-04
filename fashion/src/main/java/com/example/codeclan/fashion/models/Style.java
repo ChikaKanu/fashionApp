@@ -3,7 +3,6 @@ package com.example.codeclan.fashion.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
 
-import javax.annotation.Generated;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ public class Style implements Serializable {
     private String image;
 
     @Column(name = "labourCost")
-    private Float labourCost;
+    private Double labourCost;
 
     @Column(name = "source")
     private String source;
@@ -34,8 +33,7 @@ public class Style implements Serializable {
     @OneToMany(mappedBy = "style", fetch = FetchType.LAZY)
     private List<Booking> bookings;
 
-    public Style(Long id, String name, String image, Float labourCost, String source) {
-        this.id = id;
+    public Style(String name, String image, Double labourCost, String source) {
         this.name = name;
         this.image = image;
         this.labourCost = labourCost;
@@ -69,11 +67,11 @@ public class Style implements Serializable {
         this.image = image;
     }
 
-    public Float getLabourCost() {
+    public Double getLabourCost() {
         return labourCost;
     }
 
-    public void setLabourCost(Float labourCost) {
+    public void setLabourCost(Double labourCost) {
         this.labourCost = labourCost;
     }
 

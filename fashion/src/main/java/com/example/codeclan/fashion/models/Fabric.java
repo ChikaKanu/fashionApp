@@ -1,6 +1,5 @@
 package com.example.codeclan.fashion.models;
 
-import com.example.codeclan.fashion.controller.BookingController;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
 
@@ -24,27 +23,26 @@ public class Fabric implements Serializable {
     private String picture;
 
     @Column(name = "fabricCost")
-    private Float fabricCost;
+    private Double fabricCost;
 
     @Column(name = "colour")
     private String colour;
 
     @Column(name = "quantity")
-    private String quantity;
+    private Double quantity;
 
-    @JsonIgnoreProperties("bookings")
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-    @OneToMany(mappedBy = "fabric", fetch = FetchType.LAZY)
-    private List<Booking> bookings;
+//    @JsonIgnoreProperties("bookings")
+//    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+//    @OneToMany(mappedBy = "fabric", fetch = FetchType.LAZY)
+//    private List<Booking> bookings;
 
 
-    public Fabric(String name, String picture, Float fabricCost, String colour, String quantity) {
+    public Fabric(String name, String picture, Double fabricCost, String colour, Double quantity) {
         this.name = name;
         this.picture = picture;
         this.fabricCost = fabricCost;
         this.colour = colour;
         this.quantity = quantity;
-        this.bookings = new ArrayList<>();
     }
 
     public Fabric(){};
@@ -73,11 +71,11 @@ public class Fabric implements Serializable {
         this.picture = picture;
     }
 
-    public Float getFabricCost() {
+    public Double getFabricCost() {
         return fabricCost;
     }
 
-    public void setFabricCost(Float fabricCost) {
+    public void setFabricCost(Double fabricCost) {
         this.fabricCost = fabricCost;
     }
 
@@ -89,21 +87,21 @@ public class Fabric implements Serializable {
         this.colour = colour;
     }
 
-    public String getQuantity() {
+    public Double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(Double quantity) {
         this.quantity = quantity;
     }
-
-    public List<Booking> getBookings() {
-        return bookings;
-    }
-
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
-    }
+//
+//    public List<Booking> getBookings() {
+//        return bookings;
+//    }
+//
+//    public void setBookings(List<Booking> bookings) {
+//        this.bookings = bookings;
+//    }
 
 
 }
