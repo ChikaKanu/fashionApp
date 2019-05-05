@@ -1,9 +1,6 @@
 package com.example.codeclan.fashion.components;
 
-import com.example.codeclan.fashion.models.Customer;
-import com.example.codeclan.fashion.models.Fabric;
-import com.example.codeclan.fashion.models.Style;
-import com.example.codeclan.fashion.models.Tailor;
+import com.example.codeclan.fashion.models.*;
 import com.example.codeclan.fashion.repository.bookings.BookingRepository;
 import com.example.codeclan.fashion.repository.customers.CustomerRepository;
 import com.example.codeclan.fashion.repository.fabrics.FabricRepository;
@@ -84,6 +81,18 @@ public class DataLoader implements ApplicationRunner {
         Tailor tailor5 = new Tailor("Kata", "Kay", "080568884098");
         tailorRepository.save(tailor5);
 
+        Measurement measurement1 = new Measurement(20.03, 34.00, 35.50, 40.30, 18.23, 20.00, 23.23, 14.02, 10.00,35.40, 43.20, 20.40, 32.50, 15.00, 34.00, 24.00, 18.23, 43.23, 22.00, 34.00,22.30);
+        measurementRepository.save(measurement1);
+        Measurement measurement2 = new Measurement(19.50, 24.00, 34.50, 42.30, 18.27, 19.00, 22.20, 16.20, 10.00,43.40, 43.20, 20.40, 32.50, 15.00, 34.00, 24.00, 18.23, 43.23, 22.00, 34.00,22.30);
+        measurementRepository.save(measurement2);
+        Measurement measurement3 = new Measurement(23.03, 34.00, 35.50, 40.30, 18.23, 20.00, 23.23, 14.02, 10.00,35.40, 43.20, 20.40, 32.50, 15.00, 34.00, 24.00, 18.23, 43.23, 22.00, 34.00,22.30);
+        measurementRepository.save(measurement3);
+        Measurement measurement4 = new Measurement(21.20, 34.00, 35.50, 40.30, 18.23, 20.00, 23.23, 14.02, 10.00,35.40, 43.20, 20.40, 32.50, 15.00, 34.00, 24.00, 18.23, 43.23, 22.00, 34.00,22.30);
+        measurementRepository.save(measurement4);
+        Measurement measurement5 = new Measurement(22.00, 34.00, 35.50, 40.30, 18.23, 20.00, 23.23, 14.02, 10.00,35.40, 43.20, 20.40, 32.50, 15.00, 34.00, 24.00, 18.23, 43.23, 22.00, 34.00,22.30);
+        measurementRepository.save(measurement5);
+
+        Booking booking1 = new Booking();
 
     }
 

@@ -19,74 +19,74 @@ public class Measurement implements Serializable {
     private Long id;
 
     @Column(name = "bust")
-    private Float bust;
+    private double bust;
 
     @Column(name = "underBust")
-    private Float underBust;
+    private double underBust;
 
     @Column(name = "waist")
-    private Float waist;
+    private double waist;
 
     @Column(name = "hip")
-    private Float hip;
+    private double hip;
 
     @Column(name = "shoulder")
-    private Float shoulder;
+    private double shoulder;
 
     @Column(name = "armLength")
-    private Float armLength;
+    private double armLength;
 
     @Column(name = "neck")
-    private Float neck;
+    private double neck;
 
     @Column(name = "bicep")
-    private Float bicep;
+    private double bicep;
 
     @Column(name = "wrist")
-    private Float wrist;
+    private double wrist;
 
     @Column(name = "bustHeight")
-    private Float bustHeight;
+    private double bustHeight;
 
     @Column(name = "shoulderToWaistFront")
-    private Float shoulderToWaistFront;
+    private double shoulderToWaistFront;
 
     @Column(name = "bustSeparation")
-    private Float bustSeparation;
+    private double bustSeparation;
 
     @Column(name = "shoulderToWaistBack")
-    private Float shoulderToWaistBack;
+    private double shoulderToWaistBack;
 
     @Column(name = "backWidth")
-    private Float backWidth;
+    private double backWidth;
 
     @Column(name = "hipHeight")
-    private Float hipHeight;
+    private double hipHeight;
 
     @Column(name = "thigh")
-    private Float thigh;
+    private double thigh;
 
     @Column(name = "calf")
-    private Float calf;
+    private double calf;
 
     @Column(name = "legLength")
-    private Float legLength;
+    private double legLength;
 
     @Column(name = "waistToFloor")
-    private Float waistToFloor;
+    private double waistToFloor;
 
     @Column(name = "neckToFloor")
-    private Float neckToFloor;
+    private double neckToFloor;
 
     @Column(name = "totalHeight")
-    private Float totalHeight;
+    private double totalHeight;
 
     @JsonIgnoreProperties("bookings")
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     @OneToMany(mappedBy = "measurement", fetch = FetchType.LAZY)
     private List<Booking> bookings;
 
-    public Measurement(Float bust, Float underBust, Float waist, Float hip, Float shoulder, Float armLength, Float neck, Float bicep, Float wrist, Float bustHeight, Float shoulderToWaistFront, Float bustSeparation, Float shoulderToWaistBack, Float backWidth, Float hipHeight, Float thigh, Float calf, Float legLength, Float waistToFloor, Float neckToFloor, Float totalHeight) {
+    public Measurement(double bust, double underBust, double waist, double hip, double shoulder, double armLength, double neck, double bicep, double wrist, double bustHeight, double shoulderToWaistFront, double bustSeparation, double shoulderToWaistBack, double backWidth, double hipHeight, double thigh, double calf, double legLength, double waistToFloor, double neckToFloor, double totalHeight) {
         this.bust = bust;
         this.underBust = underBust;
         this.waist = waist;
@@ -121,165 +121,165 @@ public class Measurement implements Serializable {
         this.id = id;
     }
 
-    public Float getBust() {
+    public double getBust() {
         return bust;
     }
 
-    public void setBust(Float bust) {
+    public void setBust(double bust) {
         this.bust = bust;
     }
 
-    public Float getUnderBust() {
+    public double getUnderBust() {
         return underBust;
     }
 
-    public void setUnderBust(Float underBust) {
+    public void setUnderBust(double underBust) {
         this.underBust = underBust;
     }
 
-    public Float getWaist() {
+    public double getWaist() {
         return waist;
     }
 
-    public void setWaist(Float waist) {
+    public void setWaist(double waist) {
         this.waist = waist;
     }
 
-    public Float getHip() {
+    public double getHip() {
         return hip;
     }
 
-    public void setHip(Float hip) {
+    public void setHip(double hip) {
         this.hip = hip;
     }
 
-    public Float getShoulder() {
+    public double getShoulder() {
         return shoulder;
     }
 
-    public void setShoulder(Float shoulder) {
+    public void setShoulder(double shoulder) {
         this.shoulder = shoulder;
     }
 
-    public Float getArmLength() {
+    public double getArmLength() {
         return armLength;
     }
 
-    public void setArmLength(Float armLength) {
+    public void setArmLength(double armLength) {
         this.armLength = armLength;
     }
 
-    public Float getNeck() {
+    public double getNeck() {
         return neck;
     }
 
-    public void setNeck(Float neck) {
+    public void setNeck(double neck) {
         this.neck = neck;
     }
 
-    public Float getBicep() {
+    public double getBicep() {
         return bicep;
     }
 
-    public void setBicep(Float bicep) {
+    public void setBicep(double bicep) {
         this.bicep = bicep;
     }
 
-    public Float getWrist() {
+    public double getWrist() {
         return wrist;
     }
 
-    public void setWrist(Float wrist) {
+    public void setWrist(double wrist) {
         this.wrist = wrist;
     }
 
-    public Float getBustHeight() {
+    public double getBustHeight() {
         return bustHeight;
     }
 
-    public void setBustHeight(Float bustHeight) {
+    public void setBustHeight(double bustHeight) {
         this.bustHeight = bustHeight;
     }
 
-    public Float getShoulderToWaistFront() {
+    public double getShoulderToWaistFront() {
         return shoulderToWaistFront;
     }
 
-    public void setShoulderToWaistFront(Float shoulderToWaistFront) {
+    public void setShoulderToWaistFront(double shoulderToWaistFront) {
         this.shoulderToWaistFront = shoulderToWaistFront;
     }
 
-    public Float getBustSeparation() {
+    public double getBustSeparation() {
         return bustSeparation;
     }
 
-    public void setBustSeparation(Float bustSeparation) {
+    public void setBustSeparation(double bustSeparation) {
         this.bustSeparation = bustSeparation;
     }
 
-    public Float getShoulderToWaistBack() {
+    public double getShoulderToWaistBack() {
         return shoulderToWaistBack;
     }
 
-    public void setShoulderToWaistBack(Float shoulderToWaistBack) { this.shoulderToWaistBack = shoulderToWaistBack; }
+    public void setShoulderToWaistBack(double shoulderToWaistBack) { this.shoulderToWaistBack = shoulderToWaistBack; }
 
-    public Float getBackWidth() {
+    public double getBackWidth() {
         return backWidth;
     }
 
-    public void setBackWidth(Float backWidth) { this.backWidth = backWidth; }
+    public void setBackWidth(double backWidth) { this.backWidth = backWidth; }
 
-    public Float getHipHeight() {
+    public double getHipHeight() {
         return hipHeight;
     }
 
-    public void setHipHeight(Float hipHeight) {
+    public void setHipHeight(double hipHeight) {
         this.hipHeight = hipHeight;
     }
 
-    public Float getThigh() {
+    public double getThigh() {
         return thigh;
     }
 
-    public void setThigh(Float thigh) {
+    public void setThigh(double thigh) {
         this.thigh = thigh;
     }
 
-    public Float getCalf() {
+    public double getCalf() {
         return calf;
     }
 
-    public void setCalf(Float calf) { this.calf = calf; }
+    public void setCalf(double calf) { this.calf = calf; }
 
-    public Float getLegLength() {
+    public double getLegLength() {
         return legLength;
     }
 
-    public void setLegLength(Float legLength) {
+    public void setLegLength(double legLength) {
         this.legLength = legLength;
     }
 
-    public Float getWaistToFloor() {
+    public double getWaistToFloor() {
         return waistToFloor;
     }
 
-    public void setWaistToFloor(Float waistToFloor) {
+    public void setWaistToFloor(double waistToFloor) {
         this.waistToFloor = waistToFloor;
     }
 
-    public Float getNeckToFloor() {
+    public double getNeckToFloor() {
         return neckToFloor;
     }
 
-    public void setNeckToFloor(Float neckToFloor) {
+    public void setNeckToFloor(double neckToFloor) {
         this.neckToFloor = neckToFloor;
     }
 
-    public Float getTotalHeight() {
+    public double getTotalHeight() {
         return totalHeight;
     }
 
-    public void setTotalHeight(Float totalHeight) {
+    public void setTotalHeight(double totalHeight) {
         this.totalHeight = totalHeight;
     }
 
