@@ -40,8 +40,8 @@ public class Booking implements Serializable {
     @JoinColumn(name = "measurement_id", nullable = false)
     private Measurement measurement;
 
-    @Column(name = "totalCost")
-    private Double totalCost;
+//    @Column(name = "totalCost")
+//    private double totalCost;
 
     @JsonIgnoreProperties("tailors")
     @ManyToOne
@@ -54,7 +54,7 @@ public class Booking implements Serializable {
         this.customer = customer;
         this.measurement = measurement;
         this.tailor = tailor;
-        this.totalCost = totalCost;
+//        this.totalCost = totalCost;
         this.fabrics = new ArrayList<>();
     }
 
@@ -100,17 +100,12 @@ public class Booking implements Serializable {
         this.measurement = measurement;
     }
 
-    public void setTotalCost() {
-        Double fabricCostForQuantity = 0.00;
+    public double getTotalCost() {
+        double fabricCostForQuantity = 0.00;
         for (Fabric fabric : this.fabrics) {
-            Double cost = fabric.getFabricCost() * fabric.getQuantity();
-            fabricCostForQuantity += cost;
+            fabricCostForQuantity += fabric.getFabricCost() * fabric.getQuantity();
         }
-        this.totalCost = fabricCostForQuantity + this.getStyle().getLabourCost();
-    }
-
-    public Double getTotalCost() {
-        return totalCost;
+        return fabricCostForQuantity + this.getStyle().getLabourCost();
     }
 
     public Tailor getTailor() {

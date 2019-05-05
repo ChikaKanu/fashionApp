@@ -59,17 +59,6 @@ public class DataLoader implements ApplicationRunner {
         Customer customer5 = new Customer("Divine", "Kan", "2 Cromtom Crescent", "08045757997", "female");
         customerRepository.save(customer5);
 
-        Fabric fabric1 = new Fabric("Creshe", "url", 1200.00, "blue", 3.00);
-        fabricRepository.save(fabric1);
-        Fabric fabric2 = new Fabric("Jonx", "url", 2000.00, "green", 5.00);
-        fabricRepository.save(fabric2);
-        Fabric fabric3 = new Fabric("Bruz", "url", 1500.00, "red", 3.15);
-        fabricRepository.save(fabric3);
-        Fabric fabric4 = new Fabric("Hules", "url", 3000.00, "white", 4.00);
-        fabricRepository.save(fabric4);
-        Fabric fabric5 = new Fabric("Joles", "url", 1340.00, "blue", 1.00);
-        fabricRepository.save(fabric5);
-
         Tailor tailor1 = new Tailor("John", "Sade", "04023840928");
         tailorRepository.save(tailor1);
         Tailor tailor2 = new Tailor("Ngozi", "Nwafor", "02023840928");
@@ -102,6 +91,18 @@ public class DataLoader implements ApplicationRunner {
         bookingRepository.save(booking4);
         Booking booking5 = new Booking("16-04-2019", style5, customer5, measurement5, tailor5);
         bookingRepository.save(booking5);
+
+        Fabric fabric1 = new Fabric("Creshe", "url", 1200.00, "blue", 3.00, booking1);
+        fabricRepository.save(fabric1);
+        Fabric fabric2 = new Fabric("Jonx", "url", 2000.00, "green", 5.00, booking2);
+        fabricRepository.save(fabric2);
+        Fabric fabric3 = new Fabric("Bruz", "url", 1500.00, "red", 3.15, booking3);
+        fabricRepository.save(fabric3);
+        Fabric fabric4 = new Fabric("Hules", "url", 3000.00, "white", 4.00, booking4);
+        fabricRepository.save(fabric4);
+        Fabric fabric5 = new Fabric("Joles", "url", 1340.00, "blue", 1.00, booking5);
+        fabricRepository.save(fabric5);
+
 
     }
 

@@ -23,7 +23,7 @@ public class Style implements Serializable {
     private String image;
 
     @Column(name = "labourCost")
-    private Double labourCost;
+    private double labourCost;
 
     @Column(name = "source")
     private String source;
@@ -33,7 +33,7 @@ public class Style implements Serializable {
     @OneToMany(mappedBy = "style", fetch = FetchType.LAZY)
     private List<Booking> bookings;
 
-    public Style(String name, String image, Double labourCost, String source) {
+    public Style(String name, String image, double labourCost, String source) {
         this.name = name;
         this.image = image;
         this.labourCost = labourCost;
@@ -67,11 +67,11 @@ public class Style implements Serializable {
         this.image = image;
     }
 
-    public Double getLabourCost() {
+    public double getLabourCost() {
         return labourCost;
     }
 
-    public void setLabourCost(Double labourCost) {
+    public void setLabourCost(double labourCost) {
         this.labourCost = labourCost;
     }
 

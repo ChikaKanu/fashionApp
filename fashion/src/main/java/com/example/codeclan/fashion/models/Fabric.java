@@ -1,5 +1,7 @@
 package com.example.codeclan.fashion.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -19,20 +21,26 @@ public class Fabric implements Serializable {
     private String picture;
 
     @Column(name = "fabricCost")
-    private Double fabricCost;
+    private double fabricCost;
 
     @Column(name = "colour")
     private String colour;
 
     @Column(name = "quantity")
-    private Double quantity;
+    private double quantity;
 
-    public Fabric(String name, String picture, Double fabricCost, String colour, Double quantity) {
+    @JsonIgnoreProperties("bookings")
+    @ManyToOne
+    @JoinColumn(name = "booking_id", nullable = false)
+    private Booking booking;
+
+    public Fabric(String name, String picture, double fabricCost, String colour, double quantity, Booking booking) {
         this.name = name;
         this.picture = picture;
         this.fabricCost = fabricCost;
         this.colour = colour;
         this.quantity = quantity;
+        this.booking = booking;
     }
 
     public Fabric(){};
@@ -61,11 +69,11 @@ public class Fabric implements Serializable {
         this.picture = picture;
     }
 
-    public Double getFabricCost() {
+    public double getFabricCost() {
         return fabricCost;
     }
 
-    public void setFabricCost(Double fabricCost) {
+    public void setFabricCost(double fabricCost) {
         this.fabricCost = fabricCost;
     }
 
@@ -77,12 +85,19 @@ public class Fabric implements Serializable {
         this.colour = colour;
     }
 
-    public Double getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Double quantity) {
+    public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
 
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
 }
