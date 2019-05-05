@@ -92,7 +92,16 @@ public class DataLoader implements ApplicationRunner {
         Measurement measurement5 = new Measurement(22.00, 34.00, 35.50, 40.30, 18.23, 20.00, 23.23, 14.02, 10.00,35.40, 43.20, 20.40, 32.50, 15.00, 34.00, 24.00, 18.23, 43.23, 22.00, 34.00,22.30);
         measurementRepository.save(measurement5);
 
-        Booking booking1 = new Booking();
+        Booking booking1 = new Booking("23-04-2019", style1, customer1, measurement1, tailor1);
+        bookingRepository.save(booking1);
+        Booking booking2 = new Booking("20-04-2019", style2, customer2, measurement2, tailor2);
+        bookingRepository.save(booking2);
+        Booking booking3 = new Booking("19-04-2019", style3, customer3, measurement3, tailor3);
+        bookingRepository.save(booking3);
+        Booking booking4 = new Booking("18-04-2019", style4, customer4, measurement4, tailor4);
+        bookingRepository.save(booking4);
+        Booking booking5 = new Booking("16-04-2019", style5, customer5, measurement5, tailor5);
+        bookingRepository.save(booking5);
 
     }
 
