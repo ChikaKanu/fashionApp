@@ -22,7 +22,6 @@ import StyleFormContainer from './containers/styles/StyleFormContainer';
 import StyleListContainer from './containers/styles/StyleListContainer';
 import SingleStyleContainer from './containers/styles/SingleStyleContainer';
 
-
 class App extends Component{
   render() {
     return(
@@ -77,6 +76,5 @@ class App extends Component{
     )
   }
 }
-
 
 export default App;

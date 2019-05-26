@@ -13,10 +13,11 @@ class BookingEditFormContainer extends Component{
             fabrics: null,
             styles: null,
         };
+        this.handleBookingEdit = this.handleBookingEdit.bind(this);
 
     };
 
-    //Fundtion to get data from the backend and confirm it is mounted at the state level of this container.
+    //Function to get data from the backend and confirm it is mounted at the state level of this container.
     componentDidMount(){
         const request = new Request();
         request.get("/api/bookings" + this.props.id + "?projection=embedded").then((booking) => {
