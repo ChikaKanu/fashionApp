@@ -21,6 +21,7 @@ class BookingEditFormContainer extends Component{
     componentDidMount(){
         const request = new Request();
         request.get("/api/bookings" + this.props.id + "?projection=embedded").then((booking) => {
+            console.log({booking})
             this.setState({booking: booking})
         });
         request.get("/api/customers").then((customers) => {
@@ -53,6 +54,7 @@ class BookingEditFormContainer extends Component{
         }
         //passes data down to the component for rendering purpose. Also, a fuction passed from the component to handle data edit (update)
         return <BookingEditForm bookings = {this.state.bookings} customers = {this.state.customers} measurements = {this.state.measurements} tailors = {this.state.tailors} fabrics = {this.state.fabrics} styles = {this.state.styles} handleBookingEdit = {this.handleBookingEidt} />
+
     }
 
 }
