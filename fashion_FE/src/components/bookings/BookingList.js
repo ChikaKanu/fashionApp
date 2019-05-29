@@ -2,15 +2,16 @@ import React from 'react';
 import Booking from './Booking.js';
 
 const BookingList = (props) => {
-    const bookings = props.bookings.map((booking) => {
+    const bookings = props.bookings.map((booking,index) => {
         return(
-            <li key={bookings.id} className="booking-component-item">
+            <li key={index} className="booking-component-item">
                 <div className="booking-component">
-                    <Booking booking={booking.id} customer={booking.customer}/>
+                    <Booking booking={booking}/>
                 </div>
             </li>
             )
         }
+        
     )
     
 

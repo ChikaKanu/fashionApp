@@ -11,13 +11,12 @@ class BookingListContainer extends Component{
       componentDidMount(){
         let request = new Request();
         request.get('/api/bookings').then((data) => {
-          this.setState({bookings: data})
+          this.setState({bookings: data._embedded.bookings})
         })
       }
     
     
       render(){
-        console.log(this.state.bookings)
         return (
          <BookingList bookings = {this.state.bookings} />
         )

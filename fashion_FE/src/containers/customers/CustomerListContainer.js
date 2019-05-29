@@ -6,14 +6,14 @@ class CustomerListContainer extends Component{
     constructor(props){
         super(props);
         this.state = {
-        customers: [] 
+        customers: []
         } 
     }
 
     componentDidMount(){
         let request = new Request();
         request.get("/api/customers").then((data) => {
-            this.setState({customers: data});
+            this.setState({customers: data._embedded.customers});
         });
 
     }
