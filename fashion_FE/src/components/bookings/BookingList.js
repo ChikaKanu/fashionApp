@@ -6,7 +6,7 @@ const BookingList = (props) => {
         return(
             <li key={index} className="booking-component-item">
                 <div className="booking-component">
-                    <Booking booking={booking}/>
+                    <Booking booking={booking} measurement={booking.measurement} customer={booking.customer}/>
                 </div>
             </li>
             )

@@ -56,7 +56,7 @@ class BookingEditFormContainer extends Component{
         return <BookingEditForm bookings = {this.state.bookings} customers = {this.state.customers} measurements = {this.state.measurements} tailors = {this.state.tailors} fabrics = {this.state.fabrics} styles = {this.state.styles} handleBookingEdit = {this.handleBookingEidt} />
 
     }
-
+    
 }
 
 export default BookingEditFormContainer;

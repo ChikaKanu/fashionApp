@@ -32,11 +32,11 @@ class App extends Component{
             <Route exact path='/' component={Home}/>
             <Route exact path='/bookings' component={BookingListContainer}/>
             <Route exact path='/bookings/new' component={BookingFormContainer}/>
-            <Route exact path="bookings/edit/:id" render = {(props) =>{
+            <Route exact path='/bookings/edit/:id' render = {(props) =>{
               const id = props.match.params.id;
               return <BookingEditFormContainer id = {id} />
             }}/>
-            <Route exact path="bookings/:id" render = {(props) =>{
+            <Route path='/bookings/:id' render = {(props) =>{
               const id = props.match.params.id;
               return <SingleBookingContainer id = {id} />
             }}/>

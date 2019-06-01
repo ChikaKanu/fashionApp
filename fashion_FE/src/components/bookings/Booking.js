@@ -9,11 +9,13 @@ const Booking = (props) => {
             <React.Fragment>
                 <Link to={"/bookings/"+props.booking.id} className="name">
                     Booking_ID: {props.booking.id} 
-                    <p className="booking-list-display">Customer: {props.booking.customer.firstName} {props.booking.customer.surname}</p>
+                <p className="booking-list-display">Customer: {props.customer.firstName} {props.customer.surname}</p>
                 <p className="booking-list-display">Style: {props.booking.style.name}</p>
+                <p className="booking-list-display">Style: {props.booking.style.image}</p>
+                <p className="booking-list-display">TotalCost: {"₦ " + props.booking.totalCost}</p>   
+                <p className="booking-list-display">Status: {props.booking.status}</p>    
+                <p className="booking-list-display">Remarks: {props.booking.remarks}</p>                 
                 </Link>
-
-                <p className="booking-list-display">Measurement: [{props.booking.Measurement}]</p>
             </React.Fragment>
 
         )
