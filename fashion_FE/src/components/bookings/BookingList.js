@@ -16,7 +16,7 @@ const BookingList = (props) => {
     
 
     return(
-        <ul className="component-list">
+        <ul className="booking-component-list">
         {bookings}
         </ul>
     )

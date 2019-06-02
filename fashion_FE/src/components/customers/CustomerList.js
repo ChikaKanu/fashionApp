@@ -17,7 +17,7 @@ const CustomerList = (props) => {
     
 
     return(
-        <ul className="component-list">
+        <ul className="customer-list-item">
             {customer}
         </ul>
     )

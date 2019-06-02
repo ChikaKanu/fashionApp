@@ -8,7 +8,11 @@ const Customer = (props) => {
 
     return(
         <React.Fragment>
+            <Link to={"/customers/"+props.customer.id} className="customer-detail-link">
                 <p>Name: {props.customer.firstName} {props.customer.surname}</p>
+                <p>Contact: {props.customer.contact}</p>
+                <p>Bill: ₦ {props.customer.bill}</p>
+            </Link>
         </React.Fragment>
     )
 }

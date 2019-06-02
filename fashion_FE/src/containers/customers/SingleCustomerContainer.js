@@ -22,7 +22,7 @@ class SingleCustomerContainer extends Component{
             return null
         }
         return(
-                <CustomerDetail customer={this.state.customer}/>
+                <CustomerDetail customer={this.state.customer} bookings={this.state.customer._embedded.bookings}/>
         )
     }
 
