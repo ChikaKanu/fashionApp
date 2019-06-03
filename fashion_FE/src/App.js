@@ -6,20 +6,25 @@ import BookingListContainer from './containers/bookings/BookingListContainer';
 import BookingFormContainer from './containers/bookings/BookingFormContainer';
 import BookingEditFormContainer from './containers/bookings/BookingEditFormContainer';
 import SingleBookingContainer from './containers/bookings/SingleBookingContainer';
+import FabricEditFormContainer from './containers/fabrics/FabricEditFormContainer';
 import FabricFormContainer from './containers/fabrics/FabricFormContainer';
 import FabricListContainer from './containers/fabrics/FabricListContainer';
 import SingleFabricContainer from './containers/fabrics/SingleFabricContainer';
 import CustomerFormContainer from './containers/customers/CustomerFormContainer';
 import CustomerListContainer from './containers/customers/CustomerListContainer';
+import CustomerEditFormContainer from './containers/customers/CustomerEditFormContainer';
 import SingleCustomerContainer from './containers/customers/SingleCustomerContainer';
 import MeasurementFormContainer from './containers/measurements/MeasurementFormContainer';
 import MeasurementListContainer from './containers/measurements/MeasurementListContainer';
+import MeasurementEditFormContainer from './containers/measurements/MeasurementEditFormContainer';
 import SingleMeasurementContainer from './containers/measurements/SingleMeasurementContainer';
 import TailorFormContainer from './containers/tailors/TailorFormContainer';
 import TailorListContainer from './containers/tailors/TailorListContainer';
+import TailorsEditFormContainer from './containers/tailors/TailorEditFormContainer';
 import SingleTailorContainer from './containers/tailors/SingleTailorContainer';
 import StyleFormContainer from './containers/styles/StyleFormContainer';
 import StyleListContainer from './containers/styles/StyleListContainer';
+import StyleEditFormContainer from './containers/styles/StyleEditFormContainer';
 import SingleStyleContainer from './containers/styles/SingleStyleContainer';
 
 class App extends Component{
@@ -42,30 +47,50 @@ class App extends Component{
             }}/>
             <Route exact path='/fabrics' component={FabricListContainer}/>
             <Route exact path='/fabrics/new' component={FabricFormContainer}/>
+            <Route exact path='/fabrics/edit/:id' render = {(props) =>{
+              const id = props.match.params.id;
+              return <FabricEditFormContainer id = {id} />
+            }}/>
             <Route exact path="/fabrics/:id" render={(props)=>{
               const id  = props.match.params.id;
               return <SingleFabricContainer id = {id}/>
             }}/>
             <Route exact path='/styles' component={StyleListContainer}/>
             <Route exact path='/styles/new' component={StyleFormContainer}/>
+            <Route exact path='/styles/edit/:id' render = {(props) =>{
+              const id = props.match.params.id;
+              return <StyleEditFormContainer id = {id} />
+            }}/>
             <Route exact path="/styles/:id" render = {(props) =>{
               const id = props.match.params.id;
               return <SingleStyleContainer id = {id}/>
             }}/>
             <Route exact path='/customers' component={CustomerListContainer}/>
             <Route exact path='/customers/new' component={CustomerFormContainer}/>
+            <Route exact path='/customers/edit/:id' render = {(props) =>{
+              const id = props.match.params.id;
+              return <CustomerEditFormContainer id = {id} />
+            }}/>
             <Route exact path='/customers/:id' render={(props) => {
               const id = props.match.params.id;
               return <SingleCustomerContainer id = {id}/>
             }}/>
             <Route exact path='/measurements' component={MeasurementListContainer}/>
             <Route exact path='/measurements/new' component={MeasurementFormContainer}/>
+            <Route exact path='/measurements/edit/:id' render = {(props) =>{
+              const id = props.match.params.id;
+              return <MeasurementEditFormContainer id = {id} />
+            }}/>
             <Route exact path='/measurements/:id' render={(props) => {
               const id = props.match.params.id;
               return <SingleMeasurementContainer id = {id}/>
             }}/>
             <Route exact path='/tailors' component={TailorListContainer}/>
             <Route exact path='/tailors/new' component={TailorFormContainer}/>
+            <Route exact path='/tailors/edit/:id' render = {(props) =>{
+              const id = props.match.params.id;
+              return <TailorsEditFormContainer id = {id} />
+            }}/>
             <Route exact path="/tailors/:id" render = {(props) =>{
               const id = props.match.params.id;
               return <SingleTailorContainer id = {id} />
