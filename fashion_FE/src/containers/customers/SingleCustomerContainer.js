@@ -17,12 +17,24 @@ class SingleCustomerContainer extends Component{
         })
     }
 
+    handleDelete(id){
+        const request = new Request();
+        const url = '/api/customers/'+ id;
+        request.delete(url).then(()=>{
+            window.location = '/customers';
+        })
+    }
+    //this code redirects browser to the edit window.
+    handleEdit(id){
+        window.location = '/customers/edit/' + id;
+    }
+
     render(){
         if(!this.state.customer){
             return null
         }
         return(
-                <CustomerDetail customer={this.state.customer} bookings={this.state.customer._embedded.bookings}/>
+                <CustomerDetail customer={this.state.customer} bookings={this.state.customer._embedded.bookings} handleDelete={this.handleDelete} handleEdit={this.handleEdit}/>
         )
     }
 

@@ -43,8 +43,8 @@ class BookingEditFormContainer extends Component{
     //this function handlesthe edit and passes it to the compoent to effect change in database. Used patch for this function.
     handleBookingEdit(booking){
         const request = new Request();
-        request.patch("/api/bookings/"+ this.props.id, booking).then(() => {
-            window.location = "/bookings" + this.props.id
+        request.patch('/api/bookings/'+ this.props.id, booking).then(() => {
+            window.location = '/bookings/' + this.props.id
         })
     }
 
@@ -53,7 +53,7 @@ class BookingEditFormContainer extends Component{
             return <h2>page loading</h2>;
         }
         //passes data down to the component for rendering purpose. Also, a fuction passed from the component to handle data edit (update)
-        return <BookingEditForm bookings = {this.state.bookings} customers = {this.state.customers} measurements = {this.state.measurements} tailors = {this.state.tailors} fabrics = {this.state.fabrics} styles = {this.state.styles} handleBookingEdit = {this.handleBookingEidt} />
+        return <BookingEditForm bookings = {this.state.bookings} customers = {this.state.customers} measurements = {this.state.measurements} tailors = {this.state.tailors} fabrics = {this.state.fabrics} styles = {this.state.styles} handleBookingEdit = {this.handleBookingEdit} />
 
     }
     

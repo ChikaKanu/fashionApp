@@ -5,11 +5,11 @@ const BookingDetail = (props) => {
     console.log(props.booking)
 
     const onDelete=()=> {
-        props.handleDelete(props.booking.id)
+        props.handleDelete(props.id)
     }
 
     const onEdit=() => {
-        props.handleEdit(props.booking.id)
+        props.handleEdit(props.id)
     }
 
     if(!props.booking){
@@ -30,8 +30,8 @@ const BookingDetail = (props) => {
                 <h4>Customer Info:</h4>
                 <Customer customer={props.booking._embedded.customer}/>
             </div>
-           <button onClick={onDelete}>Delete Booking</button>
-           <button onClick={onEdit}>Edit Booking</button>
+           <button className="delete-button" onClick={onDelete}>Delete Booking</button>
+           <button className="edit-button" onClick={onEdit}>Edit Booking</button>
         </div>
     )
 }

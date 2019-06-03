@@ -29,6 +29,7 @@ class SingleBookingContainer extends Component{
     }
     //this function is passed down to the bookingdetails file to use in updating information of a particular booking
     handleEdit(id){
+        console.log(id)
         window.location = '/bookings/edit/' + id;
     }
 
@@ -36,7 +37,6 @@ class SingleBookingContainer extends Component{
         if(!this.state.booking){
             return null
         }
-        console.log(this.state.booking)
         return(
             <BookingDetail id={this.props.id} booking={this.state.booking} handleDelete={this.handleDelete} handleEdit={this.handleEdit}/>
         )

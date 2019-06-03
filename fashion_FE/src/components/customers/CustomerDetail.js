@@ -2,6 +2,15 @@ import React from 'react';
 import BookingList from "../bookings/BookingList.js";
 
 const CustomerDetail = (props) => {
+
+    const onDelete=()=>{
+        props.handleDelete(props.customer.id)
+    }
+
+    const onEdit=()=>{
+        props.handleEdit(props.customer.id)
+    }
+
     if(!props.customer){
         return null
     }
@@ -19,6 +28,8 @@ const CustomerDetail = (props) => {
                 <h4>Customer Details:</h4>
                 <BookingList bookings={props.bookings}/>
             </div>
+            <button className="delete-button" onClick={onDelete}>Delete Customer</button>
+            <button classname="edit-button" onClick={onEdit}>Edit Customer</button>
         </div>
     )
 }
