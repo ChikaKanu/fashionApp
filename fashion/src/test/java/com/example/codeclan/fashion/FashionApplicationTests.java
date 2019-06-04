@@ -49,9 +49,9 @@ public class FashionApplicationTests {
 		customerRepository.save(customer1);
 		Tailor tailor1 = new Tailor("John", "Sade", "04023840928");
 		tailorRepository.save(tailor1);
-		Measurement measurement1 = new Measurement(20.03, 34.00, 35.50, 40.30, 18.23, 20.00, 23.23, 14.02, 10.00,35.40, 43.20, 20.40, 32.50, 15.00, 34.00, 24.00, 18.23, 43.23, 22.00, 34.00,22.30);
+		Measurement measurement1 = new Measurement("Mary",20.03, 34.00, 35.50, 40.30, 18.23, 20.00, 23.23, 14.02, 10.00,35.40, 43.20, 20.40, 32.50, 15.00, 34.00, 24.00, 18.23, 43.23, 22.00, 34.00,22.30);
 		measurementRepository.save(measurement1);
-		Booking booking1 = new Booking("23-04-2019", style1, customer1, measurement1, tailor1);
+		Booking booking1 = new Booking("23-04-2019", style1, customer1, measurement1, tailor1, "Incomplete", "Awaiting supply of Buttons to complete sowing");
 		bookingRepository.save(booking1);
 		Fabric fabric1 = new Fabric("Creshe", "url", 1200.00, "blue", 3.00, booking1);
 		fabricRepository.save(fabric1);

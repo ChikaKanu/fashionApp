@@ -14,5 +14,7 @@ public interface BookingProjection {
     Customer getCustomer();
     Measurement getMeasurement();
     double getTotalCost();
+    String getStatus();
     Tailor getTailor();
+    String getRemarks();
 }

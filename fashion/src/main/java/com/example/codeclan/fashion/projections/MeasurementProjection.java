@@ -9,6 +9,7 @@ import java.util.List;
 @Projection(name = "embedded", types = Measurement.class)
 public interface MeasurementProjection {
     long getId();
+    String getSizeOwner();
     double getBust();
     double getUnderBust();
     double getWaist();

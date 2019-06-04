@@ -48,12 +48,20 @@ public class Booking implements Serializable {
     @JoinColumn(name = "tailor_id", nullable = false)
     private Tailor tailor;
 
-    public Booking(String date, Style style, Customer customer, Measurement measurement, Tailor tailor) {
+    @Column(name = "status")
+    private String status;
+
+    @Column(name = "remarks")
+    private String remarks;
+
+    public Booking(String date, Style style, Customer customer, Measurement measurement, Tailor tailor, String status, String remarks) {
         this.date = date;
         this.style = style;
         this.customer = customer;
         this.measurement = measurement;
         this.tailor = tailor;
+        this.status = status;
+        this.remarks = remarks;
 //        this.totalCost = totalCost;
         this.fabrics = new ArrayList<>();
     }
@@ -114,6 +122,23 @@ public class Booking implements Serializable {
 
     public void setTailor(Tailor tailor) {
         this.tailor = tailor;
+    }
+
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 
     public void setFabrics(List<Fabric> fabrics) {

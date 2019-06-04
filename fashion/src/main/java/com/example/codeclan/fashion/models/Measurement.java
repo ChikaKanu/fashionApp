@@ -18,6 +18,9 @@ public class Measurement implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="sizeOwner")
+    private String sizeOwner;
+
     @Column(name = "bust")
     private double bust;
 
@@ -86,7 +89,8 @@ public class Measurement implements Serializable {
     @OneToMany(mappedBy = "measurement", fetch = FetchType.LAZY)
     private List<Booking> bookings;
 
-    public Measurement(double bust, double underBust, double waist, double hip, double shoulder, double armLength, double neck, double bicep, double wrist, double bustHeight, double shoulderToWaistFront, double bustSeparation, double shoulderToWaistBack, double backWidth, double hipHeight, double thigh, double calf, double legLength, double waistToFloor, double neckToFloor, double totalHeight) {
+    public Measurement(String sizeOwner, double bust, double underBust, double waist, double hip, double shoulder, double armLength, double neck, double bicep, double wrist, double bustHeight, double shoulderToWaistFront, double bustSeparation, double shoulderToWaistBack, double backWidth, double hipHeight, double thigh, double calf, double legLength, double waistToFloor, double neckToFloor, double totalHeight) {
+        this.sizeOwner = sizeOwner;
         this.bust = bust;
         this.underBust = underBust;
         this.waist = waist;
@@ -298,4 +302,13 @@ public class Measurement implements Serializable {
     public void removeBooking(Booking booking) {
         this.bookings.remove(booking);
     }
+
+    public String getSizeOwner() {
+        return sizeOwner;
+    }
+
+    public void setSizeOwner(String sizeOwner) {
+        this.sizeOwner = sizeOwner;
+    }
+
 }
