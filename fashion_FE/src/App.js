@@ -51,7 +51,7 @@ class App extends Component{
               const id = props.match.params.id;
               return <FabricEditFormContainer id = {id} />
             }}/>
-            <Route exact path="/fabrics/:id" render={(props)=>{
+            <Route exact path='/fabrics/:id' render={(props)=>{
               const id  = props.match.params.id;
               return <SingleFabricContainer id = {id}/>
             }}/>

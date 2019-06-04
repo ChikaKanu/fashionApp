@@ -5,7 +5,7 @@ import Customer from '../customers/Customer.js';
 const CustomerList = (props) => {
     const customer = props.customers.map((customer) => {
         return(
-            <li key={customer.id} className="customer-component-item">
+            <li key={customer.id} className="customer-component-list-item">
                 <div className="customer-component">
                     <Booking customer = {customer}/>
                     <Customer customer={customer}/>
@@ -17,7 +17,7 @@ const CustomerList = (props) => {
     
 
     return(
-        <ul className="customer-list-item">
+        <ul className="customer-component-list">
             {customer}
         </ul>
     )

@@ -1,5 +1,6 @@
 import React from 'react';
 import Customer from '../customers/Customer.js';
+import FabricList from '../fabrics/FabricList.js';
 
 const BookingDetail = (props) => {
     console.log(props.booking)
@@ -29,6 +30,10 @@ const BookingDetail = (props) => {
             <div className="booking-item-component-details">        
                 <h4>Customer Info:</h4>
                 <Customer customer={props.booking._embedded.customer}/>
+            </div>
+            <div className="booking-item-component-details">        
+                <h4>Fabrics Detail:</h4>
+                <FabricList fabrics={props.booking._embedded.fabrics}/>
             </div>
            <button className="delete-button" onClick={onDelete}>Delete Booking</button>
            <button className="edit-button" onClick={onEdit}>Edit Booking</button>
