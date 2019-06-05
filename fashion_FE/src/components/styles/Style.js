@@ -1,6 +1,22 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const Style = (props) => {
+
+    if(!props.style){
+        return null;
+    }
+
+    return(
+        <React.Fragment>
+            <Link to={'/styles/'+props.style.id} className="style">
+                <p>Id: {props.style.id}</p>
+                <p>Name: {props.style.name}</p>
+                <p>Picture: {props.style.image}</p>
+            </Link>
+        </React.Fragment>
+    )
+
 
 }
 

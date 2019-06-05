@@ -10,7 +10,6 @@ const Measurement = (props) => {
     return(
         <React.Fragment>
             <Link to={'/measurements/'+ props.measurement.id} className="measurement-detail-link">
-            <h4>Measurement:</h4>
             <p>Id: {props.measurement.id}</p>
             <p>SizeOwner: {props.measurement.sizeOwner}</p>
             <p>LegLength: {props.measurement.legLength}</p>
