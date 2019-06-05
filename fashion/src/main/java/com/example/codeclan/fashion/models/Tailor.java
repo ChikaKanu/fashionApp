@@ -69,7 +69,7 @@ public class Tailor implements Serializable {
         this.surname = surname;
     }
 
-    public String getContact() {
+    public String getPhone() {
         return phone;
     }
 
