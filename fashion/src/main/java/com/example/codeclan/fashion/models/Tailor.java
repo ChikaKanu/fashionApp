@@ -22,18 +22,24 @@ public class Tailor implements Serializable {
     @Column(name = "surname")
     private String surname;
 
-    @Column(name = "contact")
-    private String contact;
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "address")
+    private String address;
+
+
 
     @JsonIgnoreProperties("bookings")
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     @OneToMany(mappedBy = "tailor", fetch = FetchType.LAZY)
     private List<Booking> bookings;
 
-    public Tailor(String firstName, String surname, String contact) {
+    public Tailor(String firstName, String surname, String phone, String address) {
         this.firstName = firstName;
         this.surname = surname;
-        this.contact = contact;
+        this.phone = phone;
+        this.address = address;
         this.bookings = new ArrayList<>();
     }
 
@@ -64,11 +70,11 @@ public class Tailor implements Serializable {
     }
 
     public String getContact() {
-        return contact;
+        return phone;
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
+    public void setContact(String phone) {
+        this.phone = phone;
     }
 
     public List<Booking> getBookings() {
@@ -77,5 +83,13 @@ public class Tailor implements Serializable {
 
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

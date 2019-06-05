@@ -59,15 +59,15 @@ public class DataLoader implements ApplicationRunner {
         Customer customer5 = new Customer("Divine", "Kan", "2 Cromtom Crescent", "08045757997", "female");
         customerRepository.save(customer5);
 
-        Tailor tailor1 = new Tailor("John", "Sade", "04023840928");
+        Tailor tailor1 = new Tailor("John", "Sade", "04023840928", "address");
         tailorRepository.save(tailor1);
-        Tailor tailor2 = new Tailor("Ngozi", "Nwafor", "02023840928");
+        Tailor tailor2 = new Tailor("Ngozi", "Nwafor", "02023840928", "address");
         tailorRepository.save(tailor2);
-        Tailor tailor3 = new Tailor("Craze", "Full", "04023844234");
+        Tailor tailor3 = new Tailor("Craze", "Full", "04023844234", "address");
         tailorRepository.save(tailor3);
-        Tailor tailor4 = new Tailor("Laff", "Kri", "01022384092");
+        Tailor tailor4 = new Tailor("Laff", "Kri", "01022384092", "address");
         tailorRepository.save(tailor4);
-        Tailor tailor5 = new Tailor("Kata", "Kay", "080568884098");
+        Tailor tailor5 = new Tailor("Kata", "Kay", "080568884098", "address");
         tailorRepository.save(tailor5);
 
         Measurement measurement1 = new Measurement("Mary",20.03, 34.00, 35.50, 40.30, 18.23, 20.00, 23.23, 14.02, 10.00,35.40, 43.20, 20.40, 32.50, 15.00, 34.00, 24.00, 18.23, 43.23, 22.00, 34.00,22.30);

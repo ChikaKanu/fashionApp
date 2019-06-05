@@ -11,6 +11,7 @@ public interface TailorProjection {
     long getId();
     String getFirstName();
     String getSurname();
-    String getContact();
+    String getPhone();
+    String getAddress();
     List<Booking> getBookings();
 }

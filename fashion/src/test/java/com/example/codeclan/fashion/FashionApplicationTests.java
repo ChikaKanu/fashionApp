@@ -47,7 +47,7 @@ public class FashionApplicationTests {
 		styleRepository.save(style1);
 		Customer customer1 = new Customer("Mary", "Ojoms", "23 Hubby Crescent", "08035457997", "female");
 		customerRepository.save(customer1);
-		Tailor tailor1 = new Tailor("John", "Sade", "04023840928");
+		Tailor tailor1 = new Tailor("John", "Sade", "04023840928", "address");
 		tailorRepository.save(tailor1);
 		Measurement measurement1 = new Measurement("Mary",20.03, 34.00, 35.50, 40.30, 18.23, 20.00, 23.23, 14.02, 10.00,35.40, 43.20, 20.40, 32.50, 15.00, 34.00, 24.00, 18.23, 43.23, 22.00, 34.00,22.30);
 		measurementRepository.save(measurement1);
