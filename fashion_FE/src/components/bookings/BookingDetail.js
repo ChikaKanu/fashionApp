@@ -2,6 +2,7 @@ import React from 'react';
 import Customer from '../customers/Customer.js';
 import FabricList from '../fabrics/FabricList.js';
 import Measurement from '../measurements/Measurement.js';
+import Style from '../styles/Style';
 
 const BookingDetail = (props) => {
     console.log(props.booking)
@@ -39,6 +40,10 @@ const BookingDetail = (props) => {
             <div className="booking-item-component-details">        
                 <h4>Measurement Detail:</h4>
                 <Measurement measurement={props.booking._embedded.measurement}/>
+            </div>
+            <div className="booking-item-component-details">        
+                <h4>Style Detail:</h4>
+                <Style style={props.booking._embedded.style}/>
             </div>
            <button className="delete-button" onClick={onDelete}>Delete Booking</button>
            <button className="edit-button" onClick={onEdit}>Edit Booking</button>
