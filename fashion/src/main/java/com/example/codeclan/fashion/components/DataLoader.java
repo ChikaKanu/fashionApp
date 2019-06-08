@@ -81,11 +81,11 @@ public class DataLoader implements ApplicationRunner {
         Measurement measurement5 = new Measurement("Divine",22.00, 34.00, 35.50, 40.30, 18.23, 20.00, 23.23, 14.02, 10.00,35.40, 43.20, 20.40, 32.50, 15.00, 34.00, 24.00, 18.23, 43.23, 22.00, 34.00,22.30);
         measurementRepository.save(measurement5);
 
-        Booking booking1 = new Booking("23-04-2019", style1, customer1, measurement1, tailor1, "Incomplete", "Awaiting supply of Buttons to complete sowing");
+        Booking booking1 = new Booking("23-04-2019", style1, null, measurement1, tailor1, "Incomplete", "Awaiting supply of Buttons to complete sowing");
         bookingRepository.save(booking1);
-        Booking booking2 = new Booking("20-04-2019", style2, customer2, measurement2, tailor2, "Completed", null);
+        Booking booking2 = new Booking("20-04-2019", style2, customer2, null, tailor2, "Completed", null);
         bookingRepository.save(booking2);
-        Booking booking3 = new Booking("19-04-2019", style3, customer3, measurement3, tailor3,"Incomplete", "Just received");
+        Booking booking3 = new Booking("19-04-2019", null, customer3, measurement3, tailor3,"Incomplete", "Just received");
         bookingRepository.save(booking3);
         Booking booking4 = new Booking("18-04-2019", style4, customer5, measurement4, tailor4,"Incomplete", "Just received");
         bookingRepository.save(booking4);
@@ -100,7 +100,7 @@ public class DataLoader implements ApplicationRunner {
         fabricRepository.save(fabric3);
         Fabric fabric4 = new Fabric("Hules", "url", 3000.00, "white", 4.00, booking4);
         fabricRepository.save(fabric4);
-        Fabric fabric5 = new Fabric("Joles", "url", 1340.00, "blue", 1.00, booking5);
+        Fabric fabric5 = new Fabric("Joles", "url", 1340.00, "blue", 1.00, null);
         fabricRepository.save(fabric5);
 
     }

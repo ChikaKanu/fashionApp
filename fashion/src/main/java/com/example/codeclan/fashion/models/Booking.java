@@ -21,7 +21,7 @@ public class Booking implements Serializable {
 
     @JsonIgnoreProperties("styles")
     @ManyToOne
-    @JoinColumn(name = "style_id", nullable = false)
+    @JoinColumn(name = "style_id")
     private Style style;
 
     @JsonIgnoreProperties("fabrics")
@@ -31,13 +31,13 @@ public class Booking implements Serializable {
 
     @JsonIgnoreProperties("customers")
     @ManyToOne
-    @JoinColumn(name = "customer_id", nullable = false)
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
 
     @JsonIgnoreProperties("measurements")
     @ManyToOne
-    @JoinColumn(name = "measurement_id", nullable = false)
+    @JoinColumn(name = "measurement_id")
     private Measurement measurement;
 
 //    @Column(name = "totalCost")
@@ -45,7 +45,7 @@ public class Booking implements Serializable {
 
     @JsonIgnoreProperties("tailors")
     @ManyToOne
-    @JoinColumn(name = "tailor_id", nullable = false)
+    @JoinColumn(name = "tailor_id")
     private Tailor tailor;
 
     @Column(name = "status")

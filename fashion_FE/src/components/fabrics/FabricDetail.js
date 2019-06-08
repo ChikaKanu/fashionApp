@@ -15,7 +15,6 @@ const FabricDetail = (props) => {
         props.handleFabricEdit(props.id)
     }
 
-    //below fuction converts the booking object recxieved from the props to an array of the object to enable render to BookingList which accepts Arrays instead of objects
     const bookings = [];
     const addBooking = bookings.push(props.fabric._embedded.booking);
 
