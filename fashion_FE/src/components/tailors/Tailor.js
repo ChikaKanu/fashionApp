@@ -10,7 +10,7 @@ const Tailor = (props) => {
         <React.Fragment>
             <Link to={'/tailors/'+props.tailor.id}>
                 <p>Name: {props.tailor.firstName} {props.tailor.surname}</p>
-                <p>Phone Contact: {props.tailor.contact}</p>
+                <p>Phone Contact: {props.tailor.phone}</p>
             </Link>
         </React.Fragment>
     )

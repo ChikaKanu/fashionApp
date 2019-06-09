@@ -37,7 +37,7 @@ class SingleStyleContainer extends Component{
         console.log(this.state.style)
 
         return(
-            <StyleDetail id={this.props.id} style={this.state.style} bookings={this.state.style._embedded.bookings}/>
+            <StyleDetail id={this.props.id} style={this.state.style}/>
         )
     }
 

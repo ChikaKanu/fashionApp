@@ -30,11 +30,13 @@ class SingleCustomerContainer extends Component{
     }
 
     render(){
+        console.log(this.state.customer)
+        
         if(!this.state.customer){
             return null
         }
         return(
-                <CustomerDetail customer={this.state.customer} bookings={this.state.customer._embedded.bookings} handleDelete={this.handleDelete} handleEdit={this.handleEdit}/>
+                <CustomerDetail customer={this.state.customer} handleDelete={this.handleDelete} handleEdit={this.handleEdit}/>
         )
     }
 

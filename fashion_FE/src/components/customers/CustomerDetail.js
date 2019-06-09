@@ -3,9 +3,12 @@ import BookingList from "../bookings/BookingList.js";
 
 const CustomerDetail = (props) => {
 
+
+    const onDelete=()=>{
+        props.handleDelete(props.customer.id)
     }
 
-    const onEdit=()=>{
+    const onEdit=()=> {
         props.handleEdit(props.customer.id)
     }
 
@@ -20,11 +23,13 @@ const CustomerDetail = (props) => {
                 <p>Bill: ₦ {props.customer.bill} </p>
             </div>
             <div className="customer-item-component-details">
-            </div>
-            <button className="delete-button" onClick={onDelete}>Delete Customer</button>
-            <button className="edit-button" onClick={onEdit}>Edit Customer</button>
+                <h4>Associated Bookings:</h4>
+                {props.customer._embedded? <BookingList bookings={props.customer._embedded.bookings}/> : "Customer has no booking"}
+             </div>
+                <button className="delete-button" onClick={onDelete}>Delete Customer</button>
+                <button className="edit-button" onClick={onEdit}>Edit Customer</button>
         </div>
-    )
+    )    
 }
 
 export default CustomerDetail;

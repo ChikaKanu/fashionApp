@@ -44,7 +44,7 @@ const MeasurementDetail = (props) => {
             </div>
             <div className="measurement-item-component-details">
                 <h4>Bookings:</h4> 
-                <BookingList bookings = {props.measurement._embedded.bookings}/>
+                {props.measurement._embedded? <BookingList bookings = {props.measurement._embedded.bookings}/>: "Measurement has no associated booking"}
             </div>
             <button className="delete-button" onClick={onDelete}>Delete Measurement</button>
             <button className="edit-button" onClick={onEdit}>Edit Measurement</button>

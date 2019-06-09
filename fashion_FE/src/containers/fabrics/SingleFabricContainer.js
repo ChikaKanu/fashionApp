@@ -30,6 +30,11 @@ class SingleFabricContainer extends Component{
 
     render(){
         console.log(this.state.fabric)
+
+        if (!this.state.fabric){
+            return null;
+        }
+        
         return(
             <FabricDetail id = {this.props.id} fabric={this.state.fabric} handleFabricDelete={this.handleFabricDelete} handleFabricEdit={this.handleFabricEdit}/>
         )

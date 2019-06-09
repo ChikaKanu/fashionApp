@@ -22,7 +22,8 @@ const StyleDetail = (props) => {
                 <p>Picture: {props.style.image}</p>
             </div>
             <div className="style-item-component-details">
-                <BookingList bookings={props.bookings}/>
+                <h4>Associated Bookings:</h4>
+                {props.style._embedded? <BookingList bookings={props.style._embedded.bookings}/>: "Selected style has no associated booking(s)."}
             </div>
             <button className="delete-button" onClick={onDelete}>Delete Style</button>
             <button className="edit-button" onClick={onEdit}>Edit Style</button>
