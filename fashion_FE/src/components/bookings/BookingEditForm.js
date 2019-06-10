@@ -29,7 +29,7 @@ class BookingEditForm extends Component{
             "remarks": this.state.remarks,
             "customer": event.target.customer.value,
             "style": event.target.style.value,
-            "fabrics":[...this.state.fabricOptions.value].filter((option) => {
+            "fabrics":[...this.state.fabricOptions].filter((option) => {
                 return option.selected
               }).map((option) => {
                 return option.value
@@ -68,14 +68,14 @@ class BookingEditForm extends Component{
                     <label htmlFor="status">Status:</label>
                     <input type="text" id='status' name="status" value={this.state.status} onChange={evt=>this.setState({status: evt.target.value})} />
                     <br/>
-                    <label htmlFor="totalCost">TotalCost:</label>
-                    <input type="text" id='totalCost' name="totalCost" value={this.state.totalCost} onChange={evt=>this.setState({totalCost: evt.target.value})} />
+                    <label htmlFor="totalCost">TotalCost (autofilled):</label>
+                    <input readOnly type="text" id='totalCost' name="totalCost" value={this.state.totalCost} onChange={evt=>this.setState({totalCost: evt.target.value})} />
                     <br/>  
                     <label htmlFor="remarks">Remarks:</label>
-                    <input type="text" id='remarks' name="remarks" value={this.state.remarks} onChange={evt=>this.setState({remarks: evt.target.value})} />
+                    <input type="text" id='remarks' name="remarks" value={this.state.remarks || ""} onChange={evt=>this.setState({remarks: evt.target.value})} />
                     <br/>  
-                    <label htmlFor="date">Status:</label>
-                    <input type="text" id='date' name="date" value={this.state.date} onChange={evt=>this.setState({date: evt.target.value})} />
+                    <label htmlFor="date">Date:</label>
+                    <input type="date" id='date' name="date" value={this.state.date} onChange={evt=>this.setState({date: evt.target.value})} />
                     <br/>
                     <label htmlFor="customer">Customer:</label>          
                     <select id='customer' name="customer" onChange={evt=>this.setState({customer: evt.target.value})} >
