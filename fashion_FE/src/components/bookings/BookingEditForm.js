@@ -73,7 +73,7 @@ class BookingEditForm extends Component{
                 <input readOnly type="text" id='totalCost' name="totalCost" value={this.state.totalCost} onChange={evt=>this.setState({totalCost: evt.target.value})} />
                 <br/>  
                 <label htmlFor="remarks">Remarks:</label>
-                <input type="text" id='remarks' name="remarks" value={this.state.remarks || ""} onChange={evt=>this.setState({remarks: evt.target.value})} />
+                <input type="text" id='remarks' name="remarks" maxLength="70" value={this.state.remarks || ""} onChange={evt=>this.setState({remarks: evt.target.value})} />
                 <br/>  
                 <label htmlFor="date">Date:</label>
                 <input type="date" id='date' name="date" value={this.state.date} onChange={evt=>this.setState({date: evt.target.value})} />
