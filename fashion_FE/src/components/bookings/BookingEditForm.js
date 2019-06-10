@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Request from '../../helpers/request';
+import Select from 'react-select';
 
 class BookingEditForm extends Component{
     constructor(props){
@@ -64,46 +65,46 @@ class BookingEditForm extends Component{
 
         return(
             <div className="booking-new-item-form" >
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="status">Status:</label>
-                    <input type="text" id='status' name="status" value={this.state.status} onChange={evt=>this.setState({status: evt.target.value})} />
-                    <br/>
-                    <label htmlFor="totalCost">TotalCost (autofilled):</label>
-                    <input readOnly type="text" id='totalCost' name="totalCost" value={this.state.totalCost} onChange={evt=>this.setState({totalCost: evt.target.value})} />
-                    <br/>  
-                    <label htmlFor="remarks">Remarks:</label>
-                    <input type="text" id='remarks' name="remarks" value={this.state.remarks || ""} onChange={evt=>this.setState({remarks: evt.target.value})} />
-                    <br/>  
-                    <label htmlFor="date">Date:</label>
-                    <input type="date" id='date' name="date" value={this.state.date} onChange={evt=>this.setState({date: evt.target.value})} />
-                    <br/>
-                    <label htmlFor="customer">Customer:</label>          
-                    <select id='customer' name="customer" onChange={evt=>this.setState({customer: evt.target.value})} >
-                        {customerOption}
-                    </select>
-                    <br/>
-                    <label htmlFor="style">Style:</label>          
-                    <select id='style' name="style" onChange={evt=>this.setState({style: evt.target.value})} >
-                        {styleOption}
-                    </select>
-                    <br/>
-                    <label htmlFor="fabrics">Fabrics:</label>          
-                    <select multiple id="fabrics"name="fabrics" onChange={evt=>this.setState({fabricOptions: evt.target.options})} >
-                        {fabricOptions}
-                    </select>
-                    <br/>
-                    <label htmlFor="tailor">Tailor:</label>          
-                    <select id='tailor' name="tailor" onChange={evt=>this.setState({tailor: evt.target.value})} >
-                        {tailorOption}
-                    </select>
-                    <br/>
-                    <label htmlFor="measurement">Measurement:</label>          
-                    <select id='measurement' name="measurement" onChange={evt=>this.setState({measurement: evt.target.value})} >
-                        {measurementOption}
-                    </select>
-                    <button id="save-button" type="submit">Save Booking</button>
-                </form>
-            </div>
+            <form onSubmit={this.handleSubmit}>
+                <label htmlFor="status">Status:</label>
+                <input type="text" id='status' name="status" value={this.state.status} onChange={evt=>this.setState({status: evt.target.value})} />
+                <br/>
+                <label htmlFor="totalCost">TotalCost (autofilled):</label>
+                <input readOnly type="text" id='totalCost' name="totalCost" value={this.state.totalCost} onChange={evt=>this.setState({totalCost: evt.target.value})} />
+                <br/>  
+                <label htmlFor="remarks">Remarks:</label>
+                <input type="text" id='remarks' name="remarks" value={this.state.remarks || ""} onChange={evt=>this.setState({remarks: evt.target.value})} />
+                <br/>  
+                <label htmlFor="date">Date:</label>
+                <input type="date" id='date' name="date" value={this.state.date} onChange={evt=>this.setState({date: evt.target.value})} />
+                <br/>
+                <label htmlFor="customer">Customer:</label>          
+                <select id='customer' name="customer" onChange={evt=>this.setState({customer: evt.target.value})} >
+                    {customerOption}
+                </select>
+                <br/>
+                <label htmlFor="style">Style:</label>          
+                <select id='style' name="style" onChange={evt=>this.setState({style: evt.target.value})} >
+                    {styleOption}
+                </select>
+                <br/>
+                <label htmlFor="fabrics">Fabrics:</label>          
+                <select multiple id="fabrics"name="fabrics" onChange={evt=>this.setState({fabricOptions: evt.target.options})} >
+                    {fabricOptions}
+                </select>
+                <br/>
+                <label htmlFor="tailor">Tailor:</label>          
+                <select id='tailor' name="tailor" onChange={evt=>this.setState({tailor: evt.target.value})} >
+                    {tailorOption}
+                </select>
+                <br/>
+                <label htmlFor="measurement">Measurement:</label>          
+                <select id='measurement' name="measurement" onChange={evt=>this.setState({measurement: evt.target.value})} >
+                    {measurementOption}
+                </select>
+                <button id="save-button" type="submit">Save Booking</button>
+            </form>
+        </div>
         )
 
     }
