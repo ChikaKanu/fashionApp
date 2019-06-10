@@ -5,17 +5,17 @@ class BookingEditForm extends Component{
     constructor(props){
         super(props);
         this.state={
-            "date": props.booking.date,
-            "status": props.booking.status,
-            "totalCost": props.booking.totalCost,
-            "remarks": props.booking.remarks,
-            "customer": props.booking.customer,
-            "style": props.booking.style,
-            "fabricOptions":props.fabrics,
-            "tailor": props.booking.tailor,
-            "measurement": props.booking.measurement,
+            date: props.booking.date,
+            status: props.booking.status,
+            totalCost: props.booking.totalCost,
+            remarks: props.booking.remarks,
+            customer: props.booking.customer,
+            style: props.booking.style,
+            fabricOptions: props.booking.fabrics,
+            tailor: props.booking.tailor,
+            measurement: props.booking.measurement,
         }
-        console.log(this.state)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     
@@ -23,10 +23,10 @@ class BookingEditForm extends Component{
     handleSubmit(event){
         event.preventDefault();
         const newBooking = {
+            "date": this.state.date,
             "status": this.state.status,
             "totalCost": this.state.totalCost,
             "remarks": this.state.remarks,
-            "date": this.state.date,
             "customer": event.target.customer.value,
             "style": event.target.style.value,
             "fabrics":[...this.state.fabricOptions.value].filter((option) => {
@@ -65,39 +65,39 @@ class BookingEditForm extends Component{
         return(
             <div className="booking-new-item-form" >
                 <form onSubmit={this.handleSubmit}>
-                    <label for="status">Status:</label>
+                    <label htmlFor="status">Status:</label>
                     <input type="text" id='status' name="status" value={this.state.status} onChange={evt=>this.setState({status: evt.target.value})} />
                     <br/>
-                    <label for="totalCost">TotalCost:</label>
+                    <label htmlFor="totalCost">TotalCost:</label>
                     <input type="text" id='totalCost' name="totalCost" value={this.state.totalCost} onChange={evt=>this.setState({totalCost: evt.target.value})} />
                     <br/>  
-                    <label for="remarks">Remarks:</label>
+                    <label htmlFor="remarks">Remarks:</label>
                     <input type="text" id='remarks' name="remarks" value={this.state.remarks} onChange={evt=>this.setState({remarks: evt.target.value})} />
                     <br/>  
-                    <label for="date">Status:</label>
+                    <label htmlFor="date">Status:</label>
                     <input type="text" id='date' name="date" value={this.state.date} onChange={evt=>this.setState({date: evt.target.value})} />
                     <br/>
-                    <label for="customer">Customer:</label>          
+                    <label htmlFor="customer">Customer:</label>          
                     <select id='customer' name="customer" onChange={evt=>this.setState({customer: evt.target.value})} >
                         {customerOption}
                     </select>
                     <br/>
-                    <label for="style">Style:</label>          
+                    <label htmlFor="style">Style:</label>          
                     <select id='style' name="style" onChange={evt=>this.setState({style: evt.target.value})} >
                         {styleOption}
                     </select>
                     <br/>
-                    <label for="fabrics">Fabrics:</label>          
+                    <label htmlFor="fabrics">Fabrics:</label>          
                     <select multiple id="fabrics"name="fabrics" onChange={evt=>this.setState({fabricOptions: evt.target.options})} >
                         {fabricOptions}
                     </select>
                     <br/>
-                    <label for="tailor">Tailor:</label>          
+                    <label htmlFor="tailor">Tailor:</label>          
                     <select id='tailor' name="tailor" onChange={evt=>this.setState({tailor: evt.target.value})} >
                         {tailorOption}
                     </select>
                     <br/>
-                    <label for="measurement">Measurement:</label>          
+                    <label htmlFor="measurement">Measurement:</label>          
                     <select id='measurement' name="measurement" onChange={evt=>this.setState({measurement: evt.target.value})} >
                         {measurementOption}
                     </select>
