@@ -7,11 +7,11 @@ class BookingEditFormContainer extends Component{
         super(props);
         this.state={
             booking: null,
-            customers: [],
-            measurements: [],
-            tailors: [],
-            fabrics: [],
-            styles: [],
+            customers: null,
+            measurements: null,
+            tailors: null,
+            fabrics: null,
+            styles: null,
         };
         this.handleBookingEdit = this.handleBookingEdit.bind(this);
 
