@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Request from '../../helpers/request';
-import TailorDetail from '../../components/tailors/TailorDetail';
+import TailorDetail from './SingleTailorDetail';
 
 class SingleTailorContainer extends Component{
     constructor(props){

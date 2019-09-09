@@ -3,7 +3,7 @@ import Customer from '../customers/Customer.js';
 import FabricList from '../fabrics/FabricList.js';
 import Measurement from '../measurements/Measurement.js';
 import Style from '../styles/Style';
-import Tailor from '../tailors/Tailor';
+import Tailor from '../../containers/tailors/Tailor';
 
 const BookingDetail = (props) => {
 
@@ -29,7 +29,7 @@ const BookingDetail = (props) => {
                 <p>Status: {props.booking.status}</p>   
                 <p>Remarks: {props.booking.remarks}</p>
             </div>
-           }} 
+            
             <div className="booking-item-component-details">        
                 <h4>Customer Info:</h4>
                 {props.booking._embedded.customer? <Customer customer={props.booking._embedded.customer}/>: "Booking has no customer"}

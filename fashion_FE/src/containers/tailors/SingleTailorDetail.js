@@ -1,7 +1,7 @@
 import React from 'react';
-import BookingList from '../bookings/BookingList';
+import BookingList from '../../components/bookings/BookingList';
 
-const TailorDetail = (props) => {
+const SingleTailorDetail = (props) => {
 
     const onDelete=()=>{
         this.handleTailorDelete(props.id);
@@ -31,4 +31,4 @@ const TailorDetail = (props) => {
     )
 }
 
-export default TailorDetail;
+export default SingleTailorDetail;

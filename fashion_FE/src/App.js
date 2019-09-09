@@ -26,13 +26,14 @@ import StyleFormContainer from './containers/styles/StyleFormContainer';
 import StyleListContainer from './containers/styles/StyleListContainer';
 import StyleEditFormContainer from './containers/styles/StyleEditFormContainer';
 import SingleStyleContainer from './containers/styles/SingleStyleContainer';
+import Header from './Header';
 
 class App extends Component{
   render() {
     return(
       <Router>
         <React.Fragment>
-          <NavBar/>
+         <Header/>
           <Switch>
             <Route exact path='/' component={Home}/>
             <Route exact path='/bookings' component={BookingListContainer}/>

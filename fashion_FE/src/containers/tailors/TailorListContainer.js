@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Request from '../../helpers/request';
-import TailorList from '../../components/tailors/TailorList';
+import TailorList from './TailorList';
 
 class TailorListContainer extends Component{
     constructor(){
