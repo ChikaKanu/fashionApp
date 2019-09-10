@@ -11,7 +11,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class user {
+public class User {
 
     @Id
     private String id;

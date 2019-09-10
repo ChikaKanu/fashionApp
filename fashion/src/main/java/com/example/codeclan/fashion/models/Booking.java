@@ -34,6 +34,9 @@ public class Booking implements Serializable {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+    @ManyToOne(cascade=CascadeType.PERSIST)
+    private User user;
+
 
     @JsonIgnoreProperties("measurements")
     @ManyToOne
@@ -58,6 +61,7 @@ public class Booking implements Serializable {
         this.date = date;
         this.style = style;
         this.customer = customer;
+        this.user = user;
         this.measurement = measurement;
         this.tailor = tailor;
         this.status = status;
@@ -157,4 +161,11 @@ public class Booking implements Serializable {
         this.fabrics.remove(fabric);
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
