@@ -10,9 +10,9 @@ const Style = (props) => {
     return(
         <React.Fragment>
             <Link to={'/styles/'+props.style.id} className="style">
-                <p>Id: {props.style.id}</p>
-                <p>Name: {props.style.name}</p>
                 <p>Picture: {props.style.image}</p>
+                <p>Name: {props.style.name}</p>
+                <p>Designer: {props.style.source}</p>
             </Link>
         </React.Fragment>
     )

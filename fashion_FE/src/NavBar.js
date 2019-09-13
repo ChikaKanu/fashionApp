@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
+import { Collapse, Nav, Navbar, DropdownToggle, NavbarBrand, Dropdown, NavbarToggler, NavItem, NavLink, DropdownItem, Button, DropdownMenu, ButtonGroup } from 'reactstrap';
 import {Link} from "react-router-dom";
 
 class NavBar extends Component{
@@ -21,8 +21,17 @@ class NavBar extends Component{
         return(
             <Navbar color="dark" dark expand="md">
             <React.Fragment>
-                
-                    <NavbarBrand tag={Link} to="/">Home</NavbarBrand>
+                    <NavbarBrand tag={Link} to="/">
+                        <Dropdown as={ButtonGroup}>
+                            <Button variant="success">Home</Button> 
+                            <DropdownToggle split variant="success" id="dropdown-split-basic"/>
+                            <DropdownMenu>
+                                <DropdownItem href="#/action-1">Booking</DropdownItem>
+                                <DropdownItem href="#/action-2">School</DropdownItem>
+                                <DropdownItem href="#/action-3">Luggage</DropdownItem>
+                            </DropdownMenu>
+                        </Dropdown>
+                    </NavbarBrand>
                     <NavbarBrand tag={Link} to="/bookings">Booking</NavbarBrand>
                     <NavbarBrand tag={Link} to="/customers">Customer</NavbarBrand>
                     <NavbarBrand tag={Link} to="/styles">Styles</NavbarBrand>
