@@ -3,7 +3,7 @@ class Request {
     //get all data from database - note that you'll need to use routing to determine sort criteria. Configure in router.
     
     get(url){
-      return( fetch(url)
+      return( fetch(url, {credentials: 'include'})
       .then((res) => res.json()));
     }
 

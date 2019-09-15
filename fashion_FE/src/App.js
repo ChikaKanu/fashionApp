@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import NavBar from "./NavBar.js";
 import Home from './Home.js';
 import { CookiesProvider } from 'react-cookie';
 import BookingListContainer from './containers/bookings/BookingListContainer';
@@ -37,7 +36,7 @@ class App extends Component{
           <React.Fragment>
           <Header/>
             <Switch>
-              <Route exact path='/' component={Home,StyleListContainer}/>
+              <Route exact path='/' component={Home}/>
               <Route exact path='/bookings' component={BookingListContainer}/>
               <Route exact path='/bookings/new' component={BookingFormContainer}/>
               <Route exact path='/bookings/edit/:id' render = {(props) =>{

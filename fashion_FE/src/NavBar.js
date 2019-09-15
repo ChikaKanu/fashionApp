@@ -21,8 +21,8 @@ class NavBar extends Component{
         return(
             <Navbar color="dark" dark expand="md">
             <React.Fragment>
-                    <NavbarBrand tag={Link} to="/">
-                        <Dropdown as={ButtonGroup}>
+                    <NavbarBrand tag={Link} to="/">Home</NavbarBrand>
+                        {/* <Dropdown as={ButtonGroup}>
                             <Button variant="success">Home</Button> 
                             <DropdownToggle split variant="success" id="dropdown-split-basic"/>
                             <DropdownMenu>
@@ -30,8 +30,7 @@ class NavBar extends Component{
                                 <DropdownItem href="#/action-2">School</DropdownItem>
                                 <DropdownItem href="#/action-3">Luggage</DropdownItem>
                             </DropdownMenu>
-                        </Dropdown>
-                    </NavbarBrand>
+                        </Dropdown> */}
                     <NavbarBrand tag={Link} to="/bookings">Booking</NavbarBrand>
                     <NavbarBrand tag={Link} to="/customers">Customer</NavbarBrand>
                     <NavbarBrand tag={Link} to="/styles">Styles</NavbarBrand>
