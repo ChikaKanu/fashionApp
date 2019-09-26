@@ -1,5 +1,5 @@
 import React from 'react';
-import Booking from './Booking.js';
+import Booking from './Booking';
 
 const BookingList = (props) => {
     const bookings = props.bookings.map((booking,index) => {

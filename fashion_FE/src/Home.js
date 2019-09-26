@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Container  } from 'reactstrap';
 import {withCookies} from 'react-cookie'
-import Style from './components/styles/Style.js'
+import Style from './components/styles/Style'
 import './index.css';
 
 class Home extends Component{
@@ -19,6 +19,7 @@ class Home extends Component{
          this.login = this.login.bind(this);
          this.logout = this.logout.bind(this);
      }
+
 
      async componentDidMount() {
         const response = await fetch('/user', {credentials: 'include'});

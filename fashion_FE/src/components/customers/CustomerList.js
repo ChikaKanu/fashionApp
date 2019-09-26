@@ -1,6 +1,6 @@
 import React from 'react';
 import Booking from '../bookings/Booking';
-import Customer from '../customers/Customer.js';
+import Customer from './Customer';
 
 const CustomerList = (props) => {
     const customer = props.customers.map((customer) => {
