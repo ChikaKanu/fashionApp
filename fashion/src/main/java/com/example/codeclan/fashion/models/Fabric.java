@@ -1,12 +1,9 @@
 package com.example.codeclan.fashion.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Entity
@@ -32,10 +29,10 @@ public class Fabric implements Serializable {
     @Column(name = "quantity")
     private double quantity;
 
-    @JsonIgnoreProperties("bookings")
+    @JsonIgnoreProperties("selectedStyles")
     @ManyToOne
-    @JoinColumn(name = "booking_id")
-    private Booking booking;
+    @JoinColumn(name = "selectedStyle_id")
+    private SelectedStyle selectedStyle;
 
 
     public Fabric(String name, String picture, double fabricCost, String colour, double quantity, Booking booking) {
@@ -44,7 +41,7 @@ public class Fabric implements Serializable {
         this.fabricCost = fabricCost;
         this.colour = colour;
         this.quantity = quantity;
-        this.booking = booking;
+        this.selectedStyle = selectedStyle;
     }
 
     public Fabric(){};
@@ -97,12 +94,12 @@ public class Fabric implements Serializable {
         this.quantity = quantity;
     }
 
-    public Booking getBooking() {
-        return booking;
+
+    public SelectedStyle getSelectedStyle() {
+        return selectedStyle;
     }
 
-    public void setBooking(Booking booking) {
-        this.booking = booking;
+    public void setSelectedStyle(SelectedStyle selectedStyle) {
+        this.selectedStyle = selectedStyle;
     }
-
 }

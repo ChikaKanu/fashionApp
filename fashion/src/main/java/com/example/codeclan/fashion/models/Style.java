@@ -1,8 +1,5 @@
 package com.example.codeclan.fashion.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -28,17 +25,27 @@ public class Style implements Serializable {
     @Column(name = "source")
     private String source;
 
-    @JsonIgnoreProperties("bookings")
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-    @OneToMany(mappedBy = "style", fetch = FetchType.LAZY)
-    private List<Booking> bookings;
+    @Column(name = "gender")
+    private String gender;
 
-    public Style(String name, String image, double labourCost, String source) {
+    @Column(name="measurementsRequired")
+    private List<String> requiredMeasurements;
+
+    @Column(name="recommendedFabrics")
+    private List<String> recommendedFabrics;
+
+    @OneToOne(mappedBy = "style")
+    private SelectedStyle selectedStyle;
+
+    public Style(String name, String image, double labourCost, String source, String gender) {
         this.name = name;
         this.image = image;
         this.labourCost = labourCost;
         this.source = source;
-        this.bookings = new ArrayList<>();
+        this.gender = gender;
+        this.recommendedFabrics = new ArrayList<>();
+        this.requiredMeasurements = new ArrayList<>();
+        this.selectedStyle = selectedStyle;
     }
 
     public Style () {};
@@ -83,11 +90,42 @@ public class Style implements Serializable {
         this.source = source;
     }
 
-    public List<Booking> getBookings() {
-        return bookings;
+    public String getGender() {
+        return gender;
     }
 
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public List<String> getRequiredMeasurements() {
+        return requiredMeasurements;
+    }
+
+    public void setRequiredMeasurements(List<String> requiredMeasurements) {
+        this.requiredMeasurements = requiredMeasurements;
+    }
+
+    public void addRequiredMeasurement(String measurementProperty){
+        this.requiredMeasurements.add(measurementProperty);
+    }
+
+    public void removeRequiredMeasurement(String measurementProperty){
+        this.requiredMeasurements.remove(measurementProperty);
+    }
+    public List<String> getRecommendedFabrics() {
+        return recommendedFabrics;
+    }
+
+    public void setRecommendedFabrics(List<String> recommendedFabrics) {
+        this.recommendedFabrics = recommendedFabrics;
+    }
+
+    public void addRecommendedFabrics(String fabricType){
+        this.recommendedFabrics.add(fabricType);
+    }
+
+    public void removeRecommendedFabrics(String fabricType){
+        this.recommendedFabrics.add(fabricType);
     }
 }

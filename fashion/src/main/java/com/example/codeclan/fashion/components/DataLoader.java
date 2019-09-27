@@ -1,8 +1,9 @@
 package com.example.codeclan.fashion.components;
 
 import com.example.codeclan.fashion.models.*;
+import com.example.codeclan.fashion.repository.UserRepository;
 import com.example.codeclan.fashion.repository.bookings.BookingRepository;
-import com.example.codeclan.fashion.repository.customers.CustomerRepository;
+import com.example.codeclan.fashion.repository.userDetails.UserDetailRepository;
 import com.example.codeclan.fashion.repository.fabrics.FabricRepository;
 import com.example.codeclan.fashion.repository.measurements.MeasurementRepository;
 import com.example.codeclan.fashion.repository.styles.StyleRepository;
@@ -19,7 +20,7 @@ public class DataLoader implements ApplicationRunner {
     StyleRepository styleRepository;
 
     @Autowired
-    CustomerRepository customerRepository;
+    UserDetailRepository userDetailRepository;
 
     @Autowired
     FabricRepository fabricRepository;
@@ -32,6 +33,9 @@ public class DataLoader implements ApplicationRunner {
 
     @Autowired
     TailorRepository tailorRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     public DataLoader(){};
 
@@ -48,16 +52,20 @@ public class DataLoader implements ApplicationRunner {
         Style style5 = new Style("Shaba", "url",6000.00, "Onjor Designs");
         styleRepository.save(style5);
 
-        Customer customer1 = new Customer("Mary", "Ojoms", "23 Hubby Crescent", "08035457997", "female");
-        customerRepository.save(customer1);
-        Customer customer2 = new Customer("Jane", "Okoro", "10 Roseburn Crescent", "08774720998", "female");
-        customerRepository.save(customer2);
-        Customer customer3 = new Customer("Ify", "Kay", "32 Clay Str", "01035477823", "female");
-        customerRepository.save(customer3);
-        Customer customer4 = new Customer("Ifun", "Favour", "8 Harlaw March", "07735457997", "female");
-        customerRepository.save(customer4);
-        Customer customer5 = new Customer("Divine", "Kan", "2 Cromtom Crescent", "08045757997", "female");
-        customerRepository.save(customer5);
+        UserDetail userDetail1 = new UserDetail("Mary", "Ojoms", "23 Hubby Crescent", "08035457997", "female");
+        userDetailRepository.save(userDetail1);
+        UserDetail userDetail2 = new UserDetail("Jane", "Okoro", "10 Roseburn Crescent", "08774720998", "female");
+        userDetailRepository.save(userDetail2);
+        UserDetail userDetail3 = new UserDetail("Ify", "Kay", "32 Clay Str", "01035477823", "female");
+        userDetailRepository.save(userDetail3);
+        UserDetail userDetail4 = new UserDetail("Ifun", "Favour", "8 Harlaw March", "07735457997", "female");
+        userDetailRepository.save(userDetail4);
+        UserDetail userDetail5 = new UserDetail("Divine", "Kan", "2 Cromtom Crescent", "08045757997", "female");
+        userDetailRepository.save(userDetail5);
+
+        User user1 = new User("1","Mary", "Ojoms", "chika@yahoo.com", "10 Ojo street", "customer");
+        userRepository.save(user1);
+
 
         Tailor tailor1 = new Tailor("John", "Sade", "04023840928", "address");
         tailorRepository.save(tailor1);
@@ -83,13 +91,13 @@ public class DataLoader implements ApplicationRunner {
 
         Booking booking1 = new Booking("23-04-2019", style1, null, measurement1, tailor1, "Incomplete", "Awaiting supply of Buttons to complete sowing");
         bookingRepository.save(booking1);
-        Booking booking2 = new Booking("20-04-2019", style2, customer2, null, tailor2, "Completed", null);
+        Booking booking2 = new Booking("20-04-2019", style2, userDetail2, null, tailor2, "Completed", null);
         bookingRepository.save(booking2);
-        Booking booking3 = new Booking("19-04-2019", style3, customer3, measurement3, tailor3,"Incomplete", "Just received");
+        Booking booking3 = new Booking("19-04-2019", style3, userDetail3, measurement3, tailor3,"Incomplete", "Just received");
         bookingRepository.save(booking3);
-        Booking booking4 = new Booking("18-04-2019", style4, customer5, measurement4, null,"Incomplete", "Just received");
+        Booking booking4 = new Booking("18-04-2019", style4, userDetail5, measurement4, null,"Incomplete", "Just received");
         bookingRepository.save(booking4);
-        Booking booking5 = new Booking("16-04-2019", style5, customer5, measurement5, tailor5, "Incomplete", null);
+        Booking booking5 = new Booking("16-04-2019", style5, userDetail5, measurement5, tailor5, "Incomplete", null);
         bookingRepository.save(booking5);
 
         Fabric fabric1 = new Fabric("Creshe", "url", 1200.00, "blue", 3.00, booking1);

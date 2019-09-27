@@ -11,7 +11,7 @@ public interface BookingProjection {
     String getDate();
     Style getStyle();
     List<Fabric> getFabrics();
-    Customer getCustomer();
+    UserDetail getCustomer();
     Measurement getMeasurement();
     double getTotalCost();
     String getStatus();

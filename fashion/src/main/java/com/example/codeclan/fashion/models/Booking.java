@@ -19,37 +19,15 @@ public class Booking implements Serializable {
     @Column(name = "date")
     private String date;
 
-    @JsonIgnoreProperties("styles")
+    @JsonIgnoreProperties("userDetails")
     @ManyToOne
-    @JoinColumn(name = "style_id")
-    private Style style;
+    @JoinColumn(name = "userDetail_id")
+    private UserDetail userDetail;
 
-    @JsonIgnoreProperties("fabrics")
+    @JsonIgnoreProperties("selectedStyles")
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     @OneToMany(mappedBy = "booking", fetch = FetchType.LAZY)
-    private List<Fabric> fabrics;
-
-    @JsonIgnoreProperties("customers")
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
-
-    @ManyToOne(cascade=CascadeType.PERSIST)
-    private User user;
-
-
-    @JsonIgnoreProperties("measurements")
-    @ManyToOne
-    @JoinColumn(name = "measurement_id")
-    private Measurement measurement;
-
-//    @Column(name = "totalCost")
-//    private double totalCost;
-
-    @JsonIgnoreProperties("tailors")
-    @ManyToOne
-    @JoinColumn(name = "tailor_id")
-    private Tailor tailor;
+    private List<SelectedStyle> selectedStyles;
 
     @Column(name = "status")
     private String status;
@@ -57,17 +35,12 @@ public class Booking implements Serializable {
     @Column(name = "remarks")
     private String remarks;
 
-    public Booking(String date, Style style, Customer customer, Measurement measurement, Tailor tailor, String status, String remarks) {
+    public Booking(String date, UserDetail userDetail, String status, String remarks) {
         this.date = date;
-        this.style = style;
-        this.customer = customer;
-        this.user = user;
-        this.measurement = measurement;
-        this.tailor = tailor;
+        this.userDetail = userDetail;
         this.status = status;
         this.remarks = remarks;
-//        this.totalCost = totalCost;
-        this.fabrics = new ArrayList<>();
+        this.selectedStyles = new ArrayList<>();
     }
 
     public Booking(){};
@@ -88,46 +61,14 @@ public class Booking implements Serializable {
         this.date = date;
     }
 
-    public Style getStyle() {
-        return style;
-    }
 
-    public void setStyle(Style style) {
-        this.style = style;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Measurement getMeasurement() {
-        return measurement;
-    }
-
-    public void setMeasurement(Measurement measurement) {
-        this.measurement = measurement;
-    }
-
-    public double getTotalCost() {
-        double fabricCostForQuantity = 0.00;
-        for (Fabric fabric : this.fabrics) {
-            fabricCostForQuantity += fabric.getFabricCost() * fabric.getQuantity();
+    public double getBookingCost() {
+        double bookingCost = 0.00;
+        for (SelectedStyle selectedStyle : this.selectedStyles) {
+            bookingCost += selectedStyle.getTotalStyleCost();
         }
-        return fabricCostForQuantity + this.getStyle().getLabourCost();
+        return bookingCost;
     }
-
-    public Tailor getTailor() {
-        return tailor;
-    }
-
-    public void setTailor(Tailor tailor) {
-        this.tailor = tailor;
-    }
-
 
     public String getStatus() {
         return status;
@@ -145,27 +86,27 @@ public class Booking implements Serializable {
         this.remarks = remarks;
     }
 
-    public void setFabrics(List<Fabric> fabrics) {
-        this.fabrics = fabrics;
+    public List<SelectedStyle> getSelectedStyles() {
+        return selectedStyles;
     }
 
-    public List<Fabric> getFabrics() {
-        return fabrics;
+    public void setSelectedStyles(List<SelectedStyle> selectedStyles) {
+        this.selectedStyles = selectedStyles;
     }
 
-    public void addFabrics(Fabric fabric) {
-        this.fabrics.add(fabric);
+    public void addSelectedStyle(SelectedStyle selectedStyle){
+        this.selectedStyles.add(selectedStyle);
     }
 
-    public void removeFabrics(Fabric fabric) {
-        this.fabrics.remove(fabric);
+    public void removeSelectedStyle(SelectedStyle selectedStyle){
+        this.selectedStyles.remove(selectedStyle);
     }
 
-    public User getUser() {
-        return user;
+    public UserDetail getUserDetail() {
+        return userDetail;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserDetail(UserDetail userDetail) {
+        this.userDetail = userDetail;
     }
 }

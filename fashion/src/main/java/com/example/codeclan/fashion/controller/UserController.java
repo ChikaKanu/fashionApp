@@ -23,7 +23,7 @@ public class UserController {
         this.registration = registrations.findByRegistrationId("okta");
     }
 
-    @GetMapping("/api/user")
+    @GetMapping("/user")
     public ResponseEntity<?> getUser(@AuthenticationPrincipal OAuth2User user){
         if (user == null) {
             return new ResponseEntity<>("", HttpStatus.OK);
@@ -32,7 +32,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/api/logout")
+    @PostMapping("/logout")
     public ResponseEntity<?> logout(HttpServletRequest request,
                                     @AuthenticationPrincipal(expression = "idToken") OidcIdToken idToken) {
         // send logout URL to client so they can initiate logout

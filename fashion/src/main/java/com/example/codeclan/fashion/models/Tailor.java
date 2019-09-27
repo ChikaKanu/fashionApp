@@ -1,12 +1,7 @@
 package com.example.codeclan.fashion.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "tailors")
@@ -28,19 +23,15 @@ public class Tailor implements Serializable {
     @Column(name = "address")
     private String address;
 
+    @OneToOne(mappedBy = "tailor")
+    private SelectedStyle selectedStyle;
 
-
-    @JsonIgnoreProperties("bookings")
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-    @OneToMany(mappedBy = "tailor", fetch = FetchType.LAZY)
-    private List<Booking> bookings;
-
-    public Tailor(String firstName, String surname, String phone, String address) {
+    public Tailor(String firstName, String surname, String phone, String address, SelectedStyle selectedStyle) {
         this.firstName = firstName;
         this.surname = surname;
         this.phone = phone;
         this.address = address;
-        this.bookings = new ArrayList<>();
+        this.selectedStyle = selectedStyle;
     }
 
     public Tailor(){};
@@ -77,19 +68,19 @@ public class Tailor implements Serializable {
         this.phone = phone;
     }
 
-    public List<Booking> getBookings() {
-        return bookings;
-    }
-
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
-    }
-
     public String getAddress() {
         return address;
     }
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public SelectedStyle getSelectedStyle() {
+        return selectedStyle;
+    }
+
+    public void setSelectedStyle(SelectedStyle selectedStyle) {
+        this.selectedStyle = selectedStyle;
     }
 }

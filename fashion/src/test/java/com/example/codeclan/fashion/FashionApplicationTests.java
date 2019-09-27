@@ -2,7 +2,7 @@ package com.example.codeclan.fashion;
 
 import com.example.codeclan.fashion.models.*;
 import com.example.codeclan.fashion.repository.bookings.BookingRepository;
-import com.example.codeclan.fashion.repository.customers.CustomerRepository;
+import com.example.codeclan.fashion.repository.userDetails.UserDetailRepository;
 import com.example.codeclan.fashion.repository.fabrics.FabricRepository;
 import com.example.codeclan.fashion.repository.measurements.MeasurementRepository;
 import com.example.codeclan.fashion.repository.styles.StyleRepository;
@@ -22,7 +22,7 @@ public class FashionApplicationTests {
 	StyleRepository styleRepository;
 
 	@Autowired
-	CustomerRepository customerRepository;
+	UserDetailRepository userDetailRepository;
 
 	@Autowired
 	FabricRepository fabricRepository;
@@ -45,13 +45,13 @@ public class FashionApplicationTests {
 
 		Style style1 = new Style("Ashabi", "url",5000.00, "Gabriel Designs");
 		styleRepository.save(style1);
-		Customer customer1 = new Customer("Mary", "Ojoms", "23 Hubby Crescent", "08035457997", "female");
-		customerRepository.save(customer1);
+		UserDetail userDetail1 = new UserDetail("Mary", "Ojoms", "23 Hubby Crescent", "08035457997", "female");
+		userDetailRepository.save(userDetail1);
 		Tailor tailor1 = new Tailor("John", "Sade", "04023840928", "address");
 		tailorRepository.save(tailor1);
 		Measurement measurement1 = new Measurement("Mary",20.03, 34.00, 35.50, 40.30, 18.23, 20.00, 23.23, 14.02, 10.00,35.40, 43.20, 20.40, 32.50, 15.00, 34.00, 24.00, 18.23, 43.23, 22.00, 34.00,22.30);
 		measurementRepository.save(measurement1);
-		Booking booking1 = new Booking("23-04-2019", style1, customer1, measurement1, tailor1, "Incomplete", "Awaiting supply of Buttons to complete sowing");
+		Booking booking1 = new Booking("23-04-2019", style1, userDetail1, measurement1, tailor1, "Incomplete", "Awaiting supply of Buttons to complete sowing");
 		bookingRepository.save(booking1);
 		Fabric fabric1 = new Fabric("Creshe", "url", 1200.00, "blue", 3.00, booking1);
 		fabricRepository.save(fabric1);

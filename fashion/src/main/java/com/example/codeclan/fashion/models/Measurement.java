@@ -1,14 +1,9 @@
 package com.example.codeclan.fashion.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "measurements")
@@ -84,10 +79,10 @@ public class Measurement implements Serializable {
     @Column(name = "totalHeight")
     private double totalHeight;
 
-    @JsonIgnoreProperties("bookings")
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-    @OneToMany(mappedBy = "measurement", fetch = FetchType.LAZY)
-    private List<Booking> bookings;
+    @JsonIgnoreProperties("selectedStyles")
+    @ManyToOne
+    @JoinColumn(name = "selectedStyle_id")
+    private SelectedStyle selectedStyle;
 
     public Measurement(String sizeOwner, double bust, double underBust, double waist, double hip, double shoulder, double armLength, double neck, double bicep, double wrist, double bustHeight, double shoulderToWaistFront, double bustSeparation, double shoulderToWaistBack, double backWidth, double hipHeight, double thigh, double calf, double legLength, double waistToFloor, double neckToFloor, double totalHeight) {
         this.sizeOwner = sizeOwner;
@@ -112,7 +107,7 @@ public class Measurement implements Serializable {
         this.waistToFloor = waistToFloor;
         this.neckToFloor = neckToFloor;
         this.totalHeight = totalHeight;
-        this.bookings = new ArrayList<>();
+        this.selectedStyle = selectedStyle;
     }
 
     public Measurement(){};
@@ -287,22 +282,6 @@ public class Measurement implements Serializable {
         this.totalHeight = totalHeight;
     }
 
-    public List<Booking> getBookings() {
-        return bookings;
-    }
-
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
-    }
-
-    public void addBooking(Booking booking) {
-        this.bookings.add(booking);
-    }
-
-    public void removeBooking(Booking booking) {
-        this.bookings.remove(booking);
-    }
-
     public String getSizeOwner() {
         return sizeOwner;
     }
@@ -311,4 +290,11 @@ public class Measurement implements Serializable {
         this.sizeOwner = sizeOwner;
     }
 
+    public SelectedStyle getSelectedStyle() {
+        return selectedStyle;
+    }
+
+    public void setSelectedStyle(SelectedStyle selectedStyle) {
+        this.selectedStyle = selectedStyle;
+    }
 }
