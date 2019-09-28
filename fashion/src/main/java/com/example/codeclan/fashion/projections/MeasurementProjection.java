@@ -1,10 +1,8 @@
 package com.example.codeclan.fashion.projections;
 
-import com.example.codeclan.fashion.models.Booking;
 import com.example.codeclan.fashion.models.Measurement;
+import com.example.codeclan.fashion.models.SelectedStyle;
 import org.springframework.data.rest.core.config.Projection;
-
-import java.util.List;
 
 @Projection(name = "embedded", types = Measurement.class)
 public interface MeasurementProjection {
@@ -31,5 +29,5 @@ public interface MeasurementProjection {
     double getWaistToFloor();
     double getNeckToFloor();
     double getTotalHeight();
-    List<Booking> getBookings();
+    SelectedStyle getSelectedStyle();
 }

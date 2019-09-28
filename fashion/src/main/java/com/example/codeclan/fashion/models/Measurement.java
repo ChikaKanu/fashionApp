@@ -84,6 +84,11 @@ public class Measurement implements Serializable {
     @JoinColumn(name = "selectedStyle_id")
     private SelectedStyle selectedStyle;
 
+    @JsonIgnoreProperties("styles")
+    @ManyToOne
+    @JoinColumn(name = "style_id")
+    private Style style;
+
     public Measurement(String sizeOwner, double bust, double underBust, double waist, double hip, double shoulder, double armLength, double neck, double bicep, double wrist, double bustHeight, double shoulderToWaistFront, double bustSeparation, double shoulderToWaistBack, double backWidth, double hipHeight, double thigh, double calf, double legLength, double waistToFloor, double neckToFloor, double totalHeight) {
         this.sizeOwner = sizeOwner;
         this.bust = bust;
@@ -108,6 +113,7 @@ public class Measurement implements Serializable {
         this.neckToFloor = neckToFloor;
         this.totalHeight = totalHeight;
         this.selectedStyle = selectedStyle;
+        this.style = style;
     }
 
     public Measurement(){};
@@ -296,5 +302,13 @@ public class Measurement implements Serializable {
 
     public void setSelectedStyle(SelectedStyle selectedStyle) {
         this.selectedStyle = selectedStyle;
+    }
+
+    public Style getStyle() {
+        return style;
+    }
+
+    public void setStyle(Style style) {
+        this.style = style;
     }
 }

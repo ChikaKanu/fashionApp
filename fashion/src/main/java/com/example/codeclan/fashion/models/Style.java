@@ -1,5 +1,8 @@
 package com.example.codeclan.fashion.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -28,11 +31,21 @@ public class Style implements Serializable {
     @Column(name = "gender")
     private String gender;
 
-    @Column(name="measurementsRequired")
-    private List<String> requiredMeasurements;
+//    @Column(name="measurementsRequired")
+//    private List<String> requiredMeasurements;
 
-    @Column(name="recommendedFabrics")
-    private List<String> recommendedFabrics;
+    @JsonIgnoreProperties("measurements")
+    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+    @OneToMany(mappedBy = "style", fetch = FetchType.LAZY)
+    private List<Measurement> requiredMeasurements;
+
+    @JsonIgnoreProperties("fabrics")
+    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+    @OneToMany(mappedBy = "style", fetch = FetchType.LAZY)
+    private List<Fabric> recommendedFabrics;
+
+//    @Column(name="recommendedFabrics")
+//    private List<String> recommendedFabrics;
 
     @OneToOne(mappedBy = "style")
     private SelectedStyle selectedStyle;
@@ -98,34 +111,34 @@ public class Style implements Serializable {
         this.gender = gender;
     }
 
-    public List<String> getRequiredMeasurements() {
+    public List<Measurement> getRequiredMeasurements() {
         return requiredMeasurements;
     }
 
-    public void setRequiredMeasurements(List<String> requiredMeasurements) {
+    public void setRequiredMeasurements(List<Measurement> requiredMeasurements) {
         this.requiredMeasurements = requiredMeasurements;
     }
 
-    public void addRequiredMeasurement(String measurementProperty){
+    public void addRequiredMeasurement(Measurement measurementProperty){
         this.requiredMeasurements.add(measurementProperty);
     }
 
-    public void removeRequiredMeasurement(String measurementProperty){
+    public void removeRequiredMeasurement(Measurement measurementProperty){
         this.requiredMeasurements.remove(measurementProperty);
     }
-    public List<String> getRecommendedFabrics() {
+    public List<Fabric> getRecommendedFabrics() {
         return recommendedFabrics;
     }
 
-    public void setRecommendedFabrics(List<String> recommendedFabrics) {
+    public void setRecommendedFabrics(List<Fabric> recommendedFabrics) {
         this.recommendedFabrics = recommendedFabrics;
     }
 
-    public void addRecommendedFabrics(String fabricType){
+    public void addRecommendedFabrics(Fabric fabricType){
         this.recommendedFabrics.add(fabricType);
     }
 
-    public void removeRecommendedFabrics(String fabricType){
+    public void removeRecommendedFabrics(Fabric fabricType){
         this.recommendedFabrics.add(fabricType);
     }
 }

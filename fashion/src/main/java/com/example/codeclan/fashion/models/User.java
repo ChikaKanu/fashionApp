@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Data
@@ -21,6 +22,9 @@ public class User {
     private String email;
     private String password;
     private String accessGroup;
-    @OneToOne(mappedBy = "userDetail")
+
+    @OneToOne
+    @JoinColumn(name = "userDetail_id")
     private UserDetail userDetail;
+
 }

@@ -34,8 +34,7 @@ public class UserDetail implements Serializable {
     @Column(name = "bill")
     private double bill;
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
+    @OneToOne(mappedBy = "userDetail")
     private User user;
 
     @JsonIgnoreProperties("bookings")
@@ -44,6 +43,7 @@ public class UserDetail implements Serializable {
     private List<Booking> bookings;
 
     public UserDetail(String postCode, String address1, String address2, String phoneNumber, String gender) {
+        this.id = id;
         this.user = user;
         this.address1 = address1;
         this.address2 = address2;

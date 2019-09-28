@@ -9,6 +9,6 @@ import java.util.List;
 
 @RepositoryRestResource(excerptProjection = BookingProjection.class)
 public interface BookingRepository extends JpaRepository<Booking, Long>, BookingRepositoryCustom {
-    List<Booking> findAllByUserId(long id);
+    List<Booking> findAllByUserDetailUserFirstName(String firstName);
 
 }

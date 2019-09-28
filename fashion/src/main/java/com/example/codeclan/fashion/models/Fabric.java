@@ -34,6 +34,11 @@ public class Fabric implements Serializable {
     @JoinColumn(name = "selectedStyle_id")
     private SelectedStyle selectedStyle;
 
+    @JsonIgnoreProperties("styles")
+    @ManyToOne
+    @JoinColumn(name = "style_id")
+    private Style style;
+
 
     public Fabric(String name, String picture, double fabricCost, String colour, double quantity) {
         this.name = name;
@@ -42,6 +47,7 @@ public class Fabric implements Serializable {
         this.colour = colour;
         this.quantity = quantity;
         this.selectedStyle = selectedStyle;
+        this.style = style;
     }
 
     public Fabric(){};
@@ -101,5 +107,13 @@ public class Fabric implements Serializable {
 
     public void setSelectedStyle(SelectedStyle selectedStyle) {
         this.selectedStyle = selectedStyle;
+    }
+
+    public Style getStyle() {
+        return style;
+    }
+
+    public void setStyle(Style style) {
+        this.style = style;
     }
 }

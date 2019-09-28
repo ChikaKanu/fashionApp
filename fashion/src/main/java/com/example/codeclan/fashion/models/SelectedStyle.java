@@ -33,7 +33,7 @@ public class SelectedStyle {
     @OneToMany(mappedBy = "selectedStyle", fetch = FetchType.LAZY)
     private List<Measurement> measurements;
 
-    @JsonIgnoreProperties("booking")
+    @JsonIgnoreProperties("bookings")
     @ManyToOne
     @JoinColumn(name = "booking_id")
     private Booking booking;

@@ -1,7 +1,6 @@
 package com.example.codeclan.fashion.projections;
 
-import com.example.codeclan.fashion.models.Booking;
-import com.example.codeclan.fashion.models.Style;
+import com.example.codeclan.fashion.models.*;
 import org.springframework.data.rest.core.config.Projection;
 
 import java.util.List;
@@ -13,5 +12,8 @@ public interface StyleProjection {
     String getImage();
     double getLabourCost();
     String getSource();
-    List<Booking> getBookings();
+    String getGender();
+    List<Fabric> getRecommendedFabrics();
+    List<Measurement> getRequiredMeasurements();
+    SelectedStyle getSelectedStyle();
 }
