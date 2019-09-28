@@ -26,7 +26,7 @@ public class Tailor implements Serializable {
     @OneToOne(mappedBy = "tailor")
     private SelectedStyle selectedStyle;
 
-    public Tailor(String firstName, String surname, String phone, String address, SelectedStyle selectedStyle) {
+    public Tailor(String firstName, String surname, String phone, String address) {
         this.firstName = firstName;
         this.surname = surname;
         this.phone = phone;

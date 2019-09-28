@@ -2,9 +2,12 @@ package com.example.codeclan.fashion.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +19,11 @@ public class Booking implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "date")
-    private String date;
+    @CreationTimestamp
+    private LocalDateTime createDateTime;
+
+    @UpdateTimestamp
+    private LocalDateTime updateDateTime;
 
     @JsonIgnoreProperties("userDetails")
     @ManyToOne
@@ -35,8 +41,9 @@ public class Booking implements Serializable {
     @Column(name = "remarks")
     private String remarks;
 
-    public Booking(String date, UserDetail userDetail, String status, String remarks) {
-        this.date = date;
+    public Booking(UserDetail userDetail, String status, String remarks) {
+        this.createDateTime = createDateTime;
+        this.updateDateTime = updateDateTime;
         this.userDetail = userDetail;
         this.status = status;
         this.remarks = remarks;
@@ -52,15 +59,6 @@ public class Booking implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
 
     public double getBookingCost() {
         double bookingCost = 0.00;
@@ -108,5 +106,21 @@ public class Booking implements Serializable {
 
     public void setUserDetail(UserDetail userDetail) {
         this.userDetail = userDetail;
+    }
+
+    public LocalDateTime getCreateDateTime() {
+        return createDateTime;
+    }
+
+    public void setCreateDateTime(LocalDateTime createDateTime) {
+        this.createDateTime = createDateTime;
+    }
+
+    public LocalDateTime getUpdateDateTime() {
+        return updateDateTime;
+    }
+
+    public void setUpdateDateTime(LocalDateTime updateDateTime) {
+        this.updateDateTime = updateDateTime;
     }
 }

@@ -43,7 +43,7 @@ public class UserDetail implements Serializable {
     @OneToMany(mappedBy = "userDetail", fetch = FetchType.LAZY)
     private List<Booking> bookings;
 
-    public UserDetail(User user, String postCode, String address1, String address2, String phoneNumber, String gender) {
+    public UserDetail(String postCode, String address1, String address2, String phoneNumber, String gender) {
         this.user = user;
         this.address1 = address1;
         this.address2 = address2;

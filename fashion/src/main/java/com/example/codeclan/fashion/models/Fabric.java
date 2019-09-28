@@ -35,7 +35,7 @@ public class Fabric implements Serializable {
     private SelectedStyle selectedStyle;
 
 
-    public Fabric(String name, String picture, double fabricCost, String colour, double quantity, Booking booking) {
+    public Fabric(String name, String picture, double fabricCost, String colour, double quantity) {
         this.name = name;
         this.picture = picture;
         this.fabricCost = fabricCost;
