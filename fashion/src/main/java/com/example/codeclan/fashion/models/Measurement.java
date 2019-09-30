@@ -79,12 +79,12 @@ public class Measurement implements Serializable {
     @Column(name = "totalHeight")
     private double totalHeight;
 
-    @JsonIgnoreProperties("selectedStyles")
+    @JsonIgnoreProperties("measurements")
     @ManyToOne
     @JoinColumn(name = "selectedStyle_id")
     private SelectedStyle selectedStyle;
 
-    @JsonIgnoreProperties("styles")
+    @JsonIgnoreProperties("measurements")
     @ManyToOne
     @JoinColumn(name = "style_id")
     private Style style;

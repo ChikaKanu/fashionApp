@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/selectedStyle")
+@RequestMapping("/selectedStyles")
 public class SelectedStyleController {
     @Autowired
     SelectedStyleRepository selectedStyleRepository;
 
-    @PutMapping("/{id}")
+    @PutMapping(value = "/{id}")
     public void updateAddSelectedStyle(@PathVariable long id){
         SelectedStyle selectedStyle = selectedStyleRepository.getOne(id);
         selectedStyleRepository.save(selectedStyle);

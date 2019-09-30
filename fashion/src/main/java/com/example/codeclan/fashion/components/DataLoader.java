@@ -45,16 +45,6 @@ public class DataLoader implements ApplicationRunner {
 
     public void run(ApplicationArguments arg) {
 
-        Style style1 = new Style("Ashabi", "url",5000.00, "Gabriel Designs", "male");
-        styleRepository.save(style1);
-        Style style2 = new Style("Kroka", "url",4000.00, "Gabriel Designs", "female");
-        styleRepository.save(style2);
-        Style style3 = new Style("Afoja", "url",6000.00, "Gabriel Designs", "female");
-        styleRepository.save(style3);
-        Style style4 = new Style("Jonny", "url",10000.00, "Gabriel Designs", "female");
-        styleRepository.save(style4);
-        Style style5 = new Style("Shaba", "url",6000.00, "Onjor Designs", "female");
-        styleRepository.save(style5);
 
 
         UserDetail userDetail1 = new UserDetail("EH113NU", "23 Hubby Crescent", "Edinburgh", "08035457997", "female");
@@ -68,8 +58,10 @@ public class DataLoader implements ApplicationRunner {
         UserDetail userDetail5 = new UserDetail("HA@#$AH", "2 Cromtom Crescent", "Aberdeen","08045757997", "female");
         userDetailRepository.save(userDetail5);
 
-        User user1 = new User("1", "Mary", "Ojoms", "chika@yahoo.com", "Xtjd1324B", "customer",  userDetail1);
+
+        User user1 = new User("1", "Mary", "Ojoms", "chika@yahoo.com", "Xtjd1324B", "customer", userDetail1);
         userRepository.save(user1);
+
 
         Tailor tailor1 = new Tailor("John", "Sade", "04023840928", "address");
         tailorRepository.save(tailor1);
@@ -104,14 +96,36 @@ public class DataLoader implements ApplicationRunner {
         Fabric fabric5 = new Fabric("Joles", "url", 1340.00, "blue", 1.00);
         fabricRepository.save(fabric5);
 
+
+        Style style1 = new Style("Ashabi", "url",5000.00, "Gabriel Designs", "male");
+        style1.addRecommendedFabrics(fabric1);
+        style1.addRecommendedFabrics(fabric2);
+        style1.addRequiredMeasurement(measurement1);
+        style1.addRequiredMeasurement(measurement2);
+        styleRepository.save(style1);
+        Style style2 = new Style("Kroka", "url",4000.00, "Gabriel Designs", "female");
+        styleRepository.save(style2);
+        Style style3 = new Style("Afoja", "url",6000.00, "Gabriel Designs", "female");
+        styleRepository.save(style3);
+        Style style4 = new Style("Jonny", "url",10000.00, "Gabriel Designs", "female");
+        styleRepository.save(style4);
+        Style style5 = new Style("Shaba", "url",6000.00, "Onjor Designs", "female");
+        styleRepository.save(style5);
+
+
         SelectedStyle selectedStyle1 = new SelectedStyle(style1, tailor1, "complete", "Completed without hitches");
+        selectedStyle1.addFabric(fabric1);
+        selectedStyle1.addFabric(fabric2);
+        selectedStyle1.addMeasurement(measurement1);
         selectedStyleRepository.save(selectedStyle1);
-        SelectedStyle selectedStyle2 = new SelectedStyle(style1, tailor1, "complete", null);
+        SelectedStyle selectedStyle2 = new SelectedStyle(style2, tailor2, "complete", null);
         selectedStyleRepository.save(selectedStyle2);
 
         Booking booking1 = new Booking(userDetail1, "Incomplete", "Awaiting supply of Buttons to complete sowing");
+        booking1.addSelectedStyle(selectedStyle1);
         bookingRepository.save(booking1);
         Booking booking2 = new Booking(userDetail2, "Completed", null);
+        booking2.addSelectedStyle(selectedStyle2);
         bookingRepository.save(booking2);
         Booking booking3 = new Booking(userDetail3,"Incomplete", "Just received");
         bookingRepository.save(booking3);

@@ -14,6 +14,6 @@ public interface StyleProjection {
     String getSource();
     String getGender();
     List<Fabric> getRecommendedFabrics();
-    List<Measurement> getRequiredMeasurements();
+//    List<Measurement> getRequiredMeasurements();
     SelectedStyle getSelectedStyle();
 }

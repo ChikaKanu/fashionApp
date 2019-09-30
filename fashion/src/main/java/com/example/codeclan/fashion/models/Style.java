@@ -31,9 +31,6 @@ public class Style implements Serializable {
     @Column(name = "gender")
     private String gender;
 
-//    @Column(name="measurementsRequired")
-//    private List<String> requiredMeasurements;
-
     @JsonIgnoreProperties("measurements")
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     @OneToMany(mappedBy = "style", fetch = FetchType.LAZY)
@@ -44,11 +41,10 @@ public class Style implements Serializable {
     @OneToMany(mappedBy = "style", fetch = FetchType.LAZY)
     private List<Fabric> recommendedFabrics;
 
-//    @Column(name="recommendedFabrics")
-//    private List<String> recommendedFabrics;
-
-    @OneToOne(mappedBy = "style")
+    @OneToOne
+    @JoinColumn(name = "selectedStyle_id")
     private SelectedStyle selectedStyle;
+
 
     public Style(String name, String image, double labourCost, String source, String gender) {
         this.name = name;
@@ -140,5 +136,13 @@ public class Style implements Serializable {
 
     public void removeRecommendedFabrics(Fabric fabricType){
         this.recommendedFabrics.add(fabricType);
+    }
+
+    public SelectedStyle getSelectedStyle() {
+        return selectedStyle;
+    }
+
+    public void setSelectedStyle(SelectedStyle selectedStyle) {
+        this.selectedStyle = selectedStyle;
     }
 }

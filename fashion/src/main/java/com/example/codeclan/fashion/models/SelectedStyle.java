@@ -4,23 +4,22 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name="selectedStyles")
-public class SelectedStyle {
+public class SelectedStyle implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "style_id")
+    @OneToOne(mappedBy = "selectedStyle")
     private Style style;
 
-    @OneToOne
-    @JoinColumn(name = "tailor_id")
+    @OneToOne(mappedBy = "selectedStyle")
     private Tailor tailor;
 
     @JsonIgnoreProperties("fabrics")
@@ -89,7 +88,7 @@ public class SelectedStyle {
         for (Fabric fabric : this.fabrics) {
             fabricCostForQuantity += fabric.getFabricCost() * fabric.getQuantity();
         }
-        return fabricCostForQuantity + this.getStyle().getLabourCost();
+        return fabricCostForQuantity /*+ this.getStyle().getLabourCost()*/;
     }
 
     public void setFabrics(List<Fabric> fabrics) {

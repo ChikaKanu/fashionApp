@@ -23,7 +23,8 @@ public class Tailor implements Serializable {
     @Column(name = "address")
     private String address;
 
-    @OneToOne(mappedBy = "tailor")
+    @OneToOne
+    @JoinColumn(name = "selectedStyle_id")
     private SelectedStyle selectedStyle;
 
     public Tailor(String firstName, String surname, String phone, String address) {
