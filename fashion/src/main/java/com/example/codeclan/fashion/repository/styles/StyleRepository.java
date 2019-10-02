@@ -7,4 +7,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource(excerptProjection = StyleProjection.class)
 public interface StyleRepository extends JpaRepository<Style, Long>, StyleRepositoryCustom {
+//    List<Fabric> findFabricsByStyleId(Long styleId);
+//    List<Measurement> findMeasurementsByStyleId(Long styleId);
 }

@@ -30,7 +30,7 @@ public class Booking implements Serializable {
     @JoinColumn(name = "userDetail_id")
     private UserDetail userDetail;
 
-    @JsonIgnoreProperties("selectedStyles")
+    @JsonIgnoreProperties("userDetails")
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     @OneToMany(mappedBy = "booking", fetch = FetchType.LAZY)
     private List<SelectedStyle> selectedStyles;

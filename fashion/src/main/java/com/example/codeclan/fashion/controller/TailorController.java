@@ -1,6 +1,7 @@
 package com.example.codeclan.fashion.controller;
 
 import com.example.codeclan.fashion.models.Tailor;
+import com.example.codeclan.fashion.repository.selectedStyles.SelectedStyleRepository;
 import com.example.codeclan.fashion.repository.tailors.TailorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
     @Autowired
     TailorRepository tailorRepository;
+
+    @Autowired
+    SelectedStyleRepository selectedStyleRepository;
 
     @PutMapping(value = "/{id}")
     public void updateAddTailor(@PathVariable long id) {

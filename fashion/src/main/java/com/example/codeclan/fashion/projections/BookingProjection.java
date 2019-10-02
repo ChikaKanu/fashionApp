@@ -12,6 +12,7 @@ public interface BookingProjection {
     LocalDateTime getCreateDateTime();
     LocalDateTime getUpdateDateTime();
     UserDetail getUserDetail();
+    double getBookingCost();
     String getStatus();
     String getRemarks();
     List<SelectedStyle> getSelectedStyles();

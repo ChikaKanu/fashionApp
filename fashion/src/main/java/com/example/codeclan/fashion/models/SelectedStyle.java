@@ -16,11 +16,16 @@ public class SelectedStyle implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(mappedBy = "selectedStyle")
+
+    @OneToOne
+    @JoinColumn(name = "tailor_id")
+    private Tailor tailor;
+
+
+    @OneToOne
+    @JoinColumn(name = "style_id")
     private Style style;
 
-    @OneToOne(mappedBy = "selectedStyle")
-    private Tailor tailor;
 
     @JsonIgnoreProperties("fabrics")
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
@@ -32,7 +37,7 @@ public class SelectedStyle implements Serializable {
     @OneToMany(mappedBy = "selectedStyle", fetch = FetchType.LAZY)
     private List<Measurement> measurements;
 
-    @JsonIgnoreProperties("bookings")
+    @JsonIgnoreProperties("userDetails")
     @ManyToOne
     @JoinColumn(name = "booking_id")
     private Booking booking;
@@ -43,7 +48,7 @@ public class SelectedStyle implements Serializable {
     @Column(name = "remarks")
     private String remarks;
 
-    public SelectedStyle(Style style, Tailor tailor, String status, String remarks){
+    public SelectedStyle(Style style, Tailor tailor, String status, String remarks, Booking booking){
         this.style = style;
         this.tailor = tailor;
         this.status = status;
@@ -135,9 +140,7 @@ public class SelectedStyle implements Serializable {
         this.remarks = remarks;
     }
 
-    public Booking getBooking() {
-        return booking;
-    }
+    public Booking getBooking() { return booking; }
 
     public void setBooking(Booking booking) {
         this.booking = booking;

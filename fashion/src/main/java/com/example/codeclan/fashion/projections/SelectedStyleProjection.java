@@ -13,6 +13,6 @@ public interface SelectedStyleProjection {
     String getStatus();
     String getRemarks();
     Booking getBooking();
-    List<Measurement> getMeasurement();
+    List<Measurement> getMeasurements();
     List<Fabric> getFabrics();
 }

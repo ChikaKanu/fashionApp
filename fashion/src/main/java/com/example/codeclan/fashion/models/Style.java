@@ -1,12 +1,7 @@
 package com.example.codeclan.fashion.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "styles")
@@ -31,20 +26,20 @@ public class Style implements Serializable {
     @Column(name = "gender")
     private String gender;
 
-    @JsonIgnoreProperties("measurements")
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-    @OneToMany(mappedBy = "style", fetch = FetchType.LAZY)
-    private List<Measurement> requiredMeasurements;
+//    @JsonIgnoreProperties("selectedStyles")
+//    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+//    @OneToMany(mappedBy = "style", fetch = FetchType.LAZY)
+//    private List<Measurement> requiredMeasurements;
+//
+//    @JsonIgnoreProperties("selectStyles")
+//    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+//    @OneToMany(mappedBy = "style", fetch = FetchType.LAZY)
+//    private List<Fabric> recommendedFabrics;
+//
 
-    @JsonIgnoreProperties("fabrics")
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-    @OneToMany(mappedBy = "style", fetch = FetchType.LAZY)
-    private List<Fabric> recommendedFabrics;
 
-    @OneToOne
-    @JoinColumn(name = "selectedStyle_id")
+    @OneToOne(mappedBy = "style")
     private SelectedStyle selectedStyle;
-
 
     public Style(String name, String image, double labourCost, String source, String gender) {
         this.name = name;
@@ -52,8 +47,8 @@ public class Style implements Serializable {
         this.labourCost = labourCost;
         this.source = source;
         this.gender = gender;
-        this.recommendedFabrics = new ArrayList<>();
-        this.requiredMeasurements = new ArrayList<>();
+//        this.recommendedFabrics = new ArrayList<>();
+//        this.requiredMeasurements = new ArrayList<>();
         this.selectedStyle = selectedStyle;
     }
 
@@ -106,37 +101,37 @@ public class Style implements Serializable {
     public void setGender(String gender) {
         this.gender = gender;
     }
-
-    public List<Measurement> getRequiredMeasurements() {
-        return requiredMeasurements;
-    }
-
-    public void setRequiredMeasurements(List<Measurement> requiredMeasurements) {
-        this.requiredMeasurements = requiredMeasurements;
-    }
-
-    public void addRequiredMeasurement(Measurement measurementProperty){
-        this.requiredMeasurements.add(measurementProperty);
-    }
-
-    public void removeRequiredMeasurement(Measurement measurementProperty){
-        this.requiredMeasurements.remove(measurementProperty);
-    }
-    public List<Fabric> getRecommendedFabrics() {
-        return recommendedFabrics;
-    }
-
-    public void setRecommendedFabrics(List<Fabric> recommendedFabrics) {
-        this.recommendedFabrics = recommendedFabrics;
-    }
-
-    public void addRecommendedFabrics(Fabric fabricType){
-        this.recommendedFabrics.add(fabricType);
-    }
-
-    public void removeRecommendedFabrics(Fabric fabricType){
-        this.recommendedFabrics.add(fabricType);
-    }
+//
+//    public List<Measurement> getRequiredMeasurements() {
+//        return requiredMeasurements;
+//    }
+//
+//    public void setRequiredMeasurements(List<Measurement> requiredMeasurements) {
+//        this.requiredMeasurements = requiredMeasurements;
+//    }
+//
+//    public void addRequiredMeasurement(Measurement measurementProperty){
+//        this.requiredMeasurements.add(measurementProperty);
+//    }
+//
+//    public void removeRequiredMeasurement(Measurement measurementProperty){
+//        this.requiredMeasurements.remove(measurementProperty);
+//    }
+//    public List<Fabric> getRecommendedFabrics() {
+//        return recommendedFabrics;
+//    }
+//
+//    public void setRecommendedFabrics(List<Fabric> recommendedFabrics) {
+//        this.recommendedFabrics = recommendedFabrics;
+//    }
+//
+//    public void addRecommendedFabrics(Fabric fabricType){
+//        this.recommendedFabrics.add(fabricType);
+//    }
+//
+//    public void removeRecommendedFabrics(Fabric fabricType){
+//        this.recommendedFabrics.add(fabricType);
+//    }
 
     public SelectedStyle getSelectedStyle() {
         return selectedStyle;

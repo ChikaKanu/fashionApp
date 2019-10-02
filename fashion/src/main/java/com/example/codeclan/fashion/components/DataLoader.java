@@ -74,34 +74,7 @@ public class DataLoader implements ApplicationRunner {
         Tailor tailor5 = new Tailor("Kata", "Kay", "080568884098", "address");
         tailorRepository.save(tailor5);
 
-        Measurement measurement1 = new Measurement("Mary",20.03, 34.00, 35.50, 40.30, 18.23, 20.00, 23.23, 14.02, 10.00,35.40, 43.20, 20.40, 32.50, 15.00, 34.00, 24.00, 18.23, 43.23, 22.00, 34.00,22.30);
-        measurementRepository.save(measurement1);
-        Measurement measurement2 = new Measurement("Jane",19.50, 24.00, 34.50, 42.30, 18.27, 19.00, 22.20, 16.20, 10.00,43.40, 43.20, 20.40, 32.50, 15.00, 34.00, 24.00, 18.23, 43.23, 22.00, 34.00,22.30);
-        measurementRepository.save(measurement2);
-        Measurement measurement3 = new Measurement("Ify",23.03, 34.00, 35.50, 40.30, 18.23, 20.00, 23.23, 14.02, 10.00,35.40, 43.20, 20.40, 32.50, 15.00, 34.00, 24.00, 18.23, 43.23, 22.00, 34.00,22.30);
-        measurementRepository.save(measurement3);
-        Measurement measurement4 = new Measurement("Ifun",21.20, 34.00, 35.50, 40.30, 18.23, 20.00, 23.23, 14.02, 10.00,35.40, 43.20, 20.40, 32.50, 15.00, 34.00, 24.00, 18.23, 43.23, 22.00, 34.00,22.30);
-        measurementRepository.save(measurement4);
-        Measurement measurement5 = new Measurement("Divine",22.00, 34.00, 35.50, 40.30, 18.23, 20.00, 23.23, 14.02, 10.00,35.40, 43.20, 20.40, 32.50, 15.00, 34.00, 24.00, 18.23, 43.23, 22.00, 34.00,22.30);
-        measurementRepository.save(measurement5);
-
-        Fabric fabric1 = new Fabric("Creshe", "url", 1200.00, "blue", 3.00);
-        fabricRepository.save(fabric1);
-        Fabric fabric2 = new Fabric("Jonx", "url", 2000.00, "green", 5.00);
-        fabricRepository.save(fabric2);
-        Fabric fabric3 = new Fabric("Bruz", "url", 1500.00, "red", 3.15);
-        fabricRepository.save(fabric3);
-        Fabric fabric4 = new Fabric("Hules", "url", 3000.00, "white", 4.00);
-        fabricRepository.save(fabric4);
-        Fabric fabric5 = new Fabric("Joles", "url", 1340.00, "blue", 1.00);
-        fabricRepository.save(fabric5);
-
-
         Style style1 = new Style("Ashabi", "url",5000.00, "Gabriel Designs", "male");
-        style1.addRecommendedFabrics(fabric1);
-        style1.addRecommendedFabrics(fabric2);
-        style1.addRequiredMeasurement(measurement1);
-        style1.addRequiredMeasurement(measurement2);
         styleRepository.save(style1);
         Style style2 = new Style("Kroka", "url",4000.00, "Gabriel Designs", "female");
         styleRepository.save(style2);
@@ -112,20 +85,9 @@ public class DataLoader implements ApplicationRunner {
         Style style5 = new Style("Shaba", "url",6000.00, "Onjor Designs", "female");
         styleRepository.save(style5);
 
-
-        SelectedStyle selectedStyle1 = new SelectedStyle(style1, tailor1, "complete", "Completed without hitches");
-        selectedStyle1.addFabric(fabric1);
-        selectedStyle1.addFabric(fabric2);
-        selectedStyle1.addMeasurement(measurement1);
-        selectedStyleRepository.save(selectedStyle1);
-        SelectedStyle selectedStyle2 = new SelectedStyle(style2, tailor2, "complete", null);
-        selectedStyleRepository.save(selectedStyle2);
-
         Booking booking1 = new Booking(userDetail1, "Incomplete", "Awaiting supply of Buttons to complete sowing");
-        booking1.addSelectedStyle(selectedStyle1);
         bookingRepository.save(booking1);
         Booking booking2 = new Booking(userDetail2, "Completed", null);
-        booking2.addSelectedStyle(selectedStyle2);
         bookingRepository.save(booking2);
         Booking booking3 = new Booking(userDetail3,"Incomplete", "Just received");
         bookingRepository.save(booking3);
@@ -133,6 +95,38 @@ public class DataLoader implements ApplicationRunner {
         bookingRepository.save(booking4);
         Booking booking5 = new Booking(userDetail4, "Incomplete", null);
         bookingRepository.save(booking5);
+
+        SelectedStyle selectedStyle1 = new SelectedStyle(style1, tailor1, "complete", "Completed without hitches", booking1);
+        selectedStyleRepository.save(selectedStyle1);
+        SelectedStyle selectedStyle2 = new SelectedStyle(style2,tailor4, "complete", null, booking2);
+        selectedStyleRepository.save(selectedStyle2);
+
+
+        Fabric fabric1 = new Fabric("Creshe", "url", 1200.00, "blue", 3.00, selectedStyle1);
+        fabricRepository.save(fabric1);
+        Fabric fabric2 = new Fabric("Jonx", "url", 2000.00, "green", 5.00, selectedStyle1);
+        fabricRepository.save(fabric2);
+        Fabric fabric3 = new Fabric("Bruz", "url", 1500.00, "red", 3.15, selectedStyle2);
+        fabricRepository.save(fabric3);
+        Fabric fabric4 = new Fabric("Hules", "url", 3000.00, "white", 4.00, selectedStyle1);
+        fabricRepository.save(fabric4);
+        Fabric fabric5 = new Fabric("Joles", "url", 1340.00, "blue", 1.00, selectedStyle2);
+        fabricRepository.save(fabric5);
+
+        Measurement measurement1 = new Measurement("Mary",20.03, 34.00, 35.50, 40.30, 18.23, 20.00, 23.23, 14.02, 10.00,35.40, 43.20, 20.40, 32.50, 15.00, 34.00, 24.00, 18.23, 43.23, 22.00, 34.00,22.30, selectedStyle1);
+        measurementRepository.save(measurement1);
+        Measurement measurement2 = new Measurement("Jane",19.50, 24.00, 34.50, 42.30, 18.27, 19.00, 22.20, 16.20, 10.00,43.40, 43.20, 20.40, 32.50, 15.00, 34.00, 24.00, 18.23, 43.23, 22.00, 34.00,22.30, selectedStyle1);
+        measurementRepository.save(measurement2);
+        Measurement measurement3 = new Measurement("Ify",23.03, 34.00, 35.50, 40.30, 18.23, 20.00, 23.23, 14.02, 10.00,35.40, 43.20, 20.40, 32.50, 15.00, 34.00, 24.00, 18.23, 43.23, 22.00, 34.00,22.30, selectedStyle2);
+        measurementRepository.save(measurement3);
+        Measurement measurement4 = new Measurement("Ifun",21.20, 34.00, 35.50, 40.30, 18.23, 20.00, 23.23, 14.02, 10.00,35.40, 43.20, 20.40, 32.50, 15.00, 34.00, 24.00, 18.23, 43.23, 22.00, 34.00,22.30, selectedStyle1);
+        measurementRepository.save(measurement4);
+        Measurement measurement5 = new Measurement("Divine",22.00, 34.00, 35.50, 40.30, 18.23, 20.00, 23.23, 14.02, 10.00,35.40, 43.20, 20.40, 32.50, 15.00, 34.00, 24.00, 18.23, 43.23, 22.00, 34.00,22.30, selectedStyle2);
+        measurementRepository.save(measurement5);
+
+
+
+
 
 
     }
