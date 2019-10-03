@@ -79,17 +79,18 @@ public class Measurement implements Serializable {
     @Column(name = "totalHeight")
     private double totalHeight;
 
+    @JsonIgnoreProperties("userDetails")
+    @ManyToOne
+    @JoinColumn(name = "userDetail_id")
+    private UserDetail userDetail;
+
     @JsonIgnoreProperties("selectedStyles")
     @ManyToOne
     @JoinColumn(name = "selectedStyle_id")
     private SelectedStyle selectedStyle;
 
-//    @JsonIgnoreProperties("styles")
-//    @ManyToOne
-//    @JoinColumn(name = "style_id")
-//    private Style style;
 
-    public Measurement(String sizeOwner, double bust, double underBust, double waist, double hip, double shoulder, double armLength, double neck, double bicep, double wrist, double bustHeight, double shoulderToWaistFront, double bustSeparation, double shoulderToWaistBack, double backWidth, double hipHeight, double thigh, double calf, double legLength, double waistToFloor, double neckToFloor, double totalHeight, SelectedStyle selectedStyle) {
+    public Measurement(String sizeOwner, double bust, double underBust, double waist, double hip, double shoulder, double armLength, double neck, double bicep, double wrist, double bustHeight, double shoulderToWaistFront, double bustSeparation, double shoulderToWaistBack, double backWidth, double hipHeight, double thigh, double calf, double legLength, double waistToFloor, double neckToFloor, double totalHeight, SelectedStyle selectedStyle, UserDetail userDetail) {
         this.sizeOwner = sizeOwner;
         this.bust = bust;
         this.underBust = underBust;
@@ -113,7 +114,7 @@ public class Measurement implements Serializable {
         this.neckToFloor = neckToFloor;
         this.totalHeight = totalHeight;
         this.selectedStyle = selectedStyle;
-//        this.style = style;
+        this.userDetail = userDetail;
     }
 
     public Measurement(){};
@@ -303,12 +304,12 @@ public class Measurement implements Serializable {
     public void setSelectedStyle(SelectedStyle selectedStyle) {
         this.selectedStyle = selectedStyle;
     }
-//
-//    public Style getStyle() {
-//        return style;
-//    }
-//
-//    public void setStyle(Style style) {
-//        this.style = style;
-//    }
+
+    public UserDetail getUserDetail() {
+        return userDetail;
+    }
+
+    public void setUserDetail(UserDetail userDetail) {
+        this.userDetail = userDetail;
+    }
 }

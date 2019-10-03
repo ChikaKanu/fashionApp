@@ -18,14 +18,18 @@ public class SelectedStyle implements Serializable {
 
 
     @OneToOne
-    @JoinColumn(name = "tailor_id")
+    @JoinColumn(name = "tailor_id", nullable = false)
     private Tailor tailor;
 
 
     @OneToOne
-    @JoinColumn(name = "style_id")
+    @JoinColumn(name = "style_id", nullable = false)
     private Style style;
 
+    @JsonIgnoreProperties("userDetails")
+    @ManyToOne
+    @JoinColumn(name = "userDetail_id")
+    private UserDetail userDetail;
 
     @JsonIgnoreProperties("fabrics")
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
@@ -48,12 +52,13 @@ public class SelectedStyle implements Serializable {
     @Column(name = "remarks")
     private String remarks;
 
-    public SelectedStyle(Style style, Tailor tailor, String status, String remarks, Booking booking){
+    public SelectedStyle(Style style, Tailor tailor, String status, String remarks, Booking booking, UserDetail userDetail){
         this.style = style;
         this.tailor = tailor;
         this.status = status;
         this.remarks = remarks;
         this.booking = booking;
+        this.userDetail = userDetail;
         this.measurements = new ArrayList<>();
         this.fabrics = new ArrayList<>();
     }
@@ -144,6 +149,14 @@ public class SelectedStyle implements Serializable {
 
     public void setBooking(Booking booking) {
         this.booking = booking;
+    }
+
+    public UserDetail getUserDetail() {
+        return userDetail;
+    }
+
+    public void setUserDetail(UserDetail userDetail) {
+        this.userDetail = userDetail;
     }
 }
 

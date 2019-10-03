@@ -42,7 +42,6 @@ public class Fabric implements Serializable {
         this.colour = colour;
         this.quantity = quantity;
         this.selectedStyle = selectedStyle;
-//        this.style = style;
     }
 
     public Fabric(){};
@@ -105,11 +104,4 @@ public class Fabric implements Serializable {
     }
 
 
-//    public Style getStyle() {
-//        return style;
-//    }
-//
-//    public void setStyle(Style style) {
-//        this.style = style;
-//    }
 }

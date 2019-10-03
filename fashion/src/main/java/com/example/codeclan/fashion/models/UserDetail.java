@@ -42,8 +42,18 @@ public class UserDetail implements Serializable {
     @OneToMany(mappedBy = "userDetail", fetch = FetchType.LAZY)
     private List<Booking> bookings;
 
+    @JsonIgnoreProperties("measurements")
+    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+    @OneToMany(mappedBy = "userDetail", fetch = FetchType.LAZY)
+    private List<Measurement> measurements;
+
+    @JsonIgnoreProperties("selectedStyles")
+    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+    @OneToMany(mappedBy = "userDetail", fetch = FetchType.LAZY)
+    private List<SelectedStyle> selectedStyles;
+
     public UserDetail(String postCode, String address1, String address2, String phoneNumber, String gender) {
-//        this.user = user;
+        this.user = user;
         this.address1 = address1;
         this.address2 = address2;
         this.postCode = postCode;
@@ -51,6 +61,8 @@ public class UserDetail implements Serializable {
         this.gender = gender;
         this.bill = bill;
         this.bookings = new ArrayList<>();
+        this.measurements = new ArrayList<>();
+        this.selectedStyles = new ArrayList<>();
     }
 
     public UserDetail() {
@@ -100,13 +112,13 @@ public class UserDetail implements Serializable {
         this.bookings.remove(booking);
     }
 
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public String getAddress1() {
         return address1;
@@ -138,5 +150,21 @@ public class UserDetail implements Serializable {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public List<Measurement> getMeasurements() {
+        return measurements;
+    }
+
+    public void setMeasurements(List<Measurement> measurements) {
+        this.measurements = measurements;
+    }
+
+    public List<SelectedStyle> getSelectedStyles() {
+        return selectedStyles;
+    }
+
+    public void setSelectedStyles(List<SelectedStyle> selectedStyles) {
+        this.selectedStyles = selectedStyles;
     }
 }

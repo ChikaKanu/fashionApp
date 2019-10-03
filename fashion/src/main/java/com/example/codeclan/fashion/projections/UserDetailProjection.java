@@ -1,8 +1,6 @@
 package com.example.codeclan.fashion.projections;
 
-import com.example.codeclan.fashion.models.Booking;
-import com.example.codeclan.fashion.models.User;
-import com.example.codeclan.fashion.models.UserDetail;
+import com.example.codeclan.fashion.models.*;
 
 import org.springframework.data.rest.core.config.Projection;
 
@@ -19,4 +17,6 @@ public interface UserDetailProjection {
     String getGender();
     double getBill();
     List<Booking> getBookings();
+    List<Measurement> getMeasurements();
+    List<SelectedStyle> getSelectedStyles();
 }
