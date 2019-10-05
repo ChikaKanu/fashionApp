@@ -9,11 +9,10 @@ import java.util.List;
 @Projection(name = "embedded", types = UserDetail.class)
 public interface UserDetailProjection {
     long getId();
+    String getFirstName();
+    String getSurname();
     User getUser();
-    String getAddress1();
-    String getAddress2();
-    String getPostCode();
-    String getPhoneNumber();
+    Address getAddress();
     String getGender();
     double getBill();
     List<Booking> getBookings();

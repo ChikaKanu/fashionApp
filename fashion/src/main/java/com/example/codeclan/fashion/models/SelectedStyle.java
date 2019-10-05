@@ -16,11 +16,9 @@ public class SelectedStyle implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @OneToOne
     @JoinColumn(name = "tailor_id", nullable = false)
     private Tailor tailor;
-
 
     @OneToOne
     @JoinColumn(name = "style_id", nullable = false)
@@ -52,7 +50,7 @@ public class SelectedStyle implements Serializable {
     @Column(name = "remarks")
     private String remarks;
 
-    public SelectedStyle(Style style, Tailor tailor, String status, String remarks, Booking booking, UserDetail userDetail){
+    public SelectedStyle(Style style, Tailor tailor, String status, String remarks, UserDetail userDetail){
         this.style = style;
         this.tailor = tailor;
         this.status = status;
@@ -98,7 +96,7 @@ public class SelectedStyle implements Serializable {
         for (Fabric fabric : this.fabrics) {
             fabricCostForQuantity += fabric.getFabricCost() * fabric.getQuantity();
         }
-        return fabricCostForQuantity /*+ this.getStyle().getLabourCost()*/;
+        return fabricCostForQuantity + this.getStyle().getLabourCost();
     }
 
     public void setFabrics(List<Fabric> fabrics) {

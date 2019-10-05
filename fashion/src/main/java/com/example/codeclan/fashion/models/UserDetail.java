@@ -10,23 +10,15 @@ import java.util.List;
 
 @Entity
 @Table(name = "userDetails")
-public class UserDetail implements Serializable {
+public class UserDetail extends Resource implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "address1", nullable = false)
-    private String address1;
-
-    @Column(name = "address2")
-    private String address2;
-
-    @Column(name = "postCode")
-    private String postCode;
-
-    @Column(name = "phoneNumber", nullable = false)
-    private String phoneNumber;
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
 
     @Column(name = "gender")
     private String gender;
@@ -34,7 +26,8 @@ public class UserDetail implements Serializable {
     @Column(name = "bill")
     private double bill;
 
-    @OneToOne(mappedBy = "userDetail", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
     @JsonIgnoreProperties("bookings")
@@ -52,21 +45,18 @@ public class UserDetail implements Serializable {
     @OneToMany(mappedBy = "userDetail", fetch = FetchType.LAZY)
     private List<SelectedStyle> selectedStyles;
 
-    public UserDetail(String postCode, String address1, String address2, String phoneNumber, String gender) {
-        this.user = user;
-        this.address1 = address1;
-        this.address2 = address2;
-        this.postCode = postCode;
-        this.phoneNumber = phoneNumber;
+    public UserDetail(String firstName, String surname, Address address, String gender) {
+        super(firstName, surname);
+        this.address = address;
         this.gender = gender;
+        this.user = user;
         this.bill = bill;
         this.bookings = new ArrayList<>();
         this.measurements = new ArrayList<>();
         this.selectedStyles = new ArrayList<>();
     }
 
-    public UserDetail() {
-    }
+    public UserDetail(){};
 
     public Long getId() {
         return id;
@@ -112,46 +102,6 @@ public class UserDetail implements Serializable {
         this.bookings.remove(booking);
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public String getAddress1() {
-        return address1;
-    }
-
-    public void setAddress1(String address1) {
-        this.address1 = address1;
-    }
-
-    public String getAddress2() {
-        return address2;
-    }
-
-    public void setAddress2(String address2) {
-        this.address2 = address2;
-    }
-
-    public String getPostCode() {
-        return postCode;
-    }
-
-    public void setPostCode(String postCode) {
-        this.postCode = postCode;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
     public List<Measurement> getMeasurements() {
         return measurements;
     }
@@ -166,5 +116,21 @@ public class UserDetail implements Serializable {
 
     public void setSelectedStyles(List<SelectedStyle> selectedStyles) {
         this.selectedStyles = selectedStyles;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

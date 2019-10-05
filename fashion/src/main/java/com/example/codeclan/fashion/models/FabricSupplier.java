@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "tailors")
-public class Tailor extends Resource implements Serializable{
+@Table(name = "fabricSuppliers")
+public class FabricSupplier extends Resource implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,33 +14,34 @@ public class Tailor extends Resource implements Serializable{
     @Column(name = "companyName")
     private String companyName;
 
-    @OneToOne(mappedBy = "tailor")
-    private SelectedStyle selectedStyle;
-
-    @OneToOne
-    @JoinColumn(name = "address_id")
-    private Address address;
+    @OneToOne(mappedBy = "fabricSupplier", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Fabric fabric;
 
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Tailor(){};
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
 
-    public Tailor(String firstName, String surname, Address address, String companyName) {
+    public FabricSupplier(String firstName, String surname, Address address, String companyName) {
         super(firstName, surname);
         this.user = user;
-        this.companyName = companyName;
         this.address = address;
-        this.selectedStyle = selectedStyle;
+        this.companyName = companyName;
+        this.fabric = fabric;
+
     }
 
-    public SelectedStyle getSelectedStyle() {
-        return selectedStyle;
+    public FabricSupplier(){};
+
+    public Long getId() {
+        return id;
     }
 
-    public void setSelectedStyle(SelectedStyle selectedStyle) {
-        this.selectedStyle = selectedStyle;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getCompanyName() {
@@ -51,12 +52,12 @@ public class Tailor extends Resource implements Serializable{
         this.companyName = companyName;
     }
 
-    public Long getId() {
-        return id;
+    public Fabric getFabric() {
+        return fabric;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setFabric(Fabric fabric) {
+        this.fabric = fabric;
     }
 
     public Address getAddress() {

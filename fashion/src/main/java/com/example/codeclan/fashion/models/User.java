@@ -17,10 +17,17 @@ public class User {
     private String firstName;
     private String surname;
     private String email;
+    private String phoneNumber;
     private String password;
     private String accessGroup;
-    @OneToOne
-    @JoinColumn(name = "userDetail_id")
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private UserDetail userDetail;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Tailor tailor;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private FabricSupplier fabricSupplier;
 
 }

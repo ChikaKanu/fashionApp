@@ -29,17 +29,22 @@ public class Fabric implements Serializable {
     @Column(name = "quantity")
     private double quantity;
 
+    @OneToOne
+    @JoinColumn(name = "fabricSupplier_id")
+    private FabricSupplier fabricSupplier;
+
     @JsonIgnoreProperties("fabrics")
     @ManyToOne
     @JoinColumn(name = "selectedStyle_id")
     private SelectedStyle selectedStyle;
 
 
-    public Fabric(String name, String picture, double fabricCost, String colour, double quantity, SelectedStyle selectedStyle) {
+    public Fabric(String name, String picture, double fabricCost, String colour, double quantity, FabricSupplier fabricSupplier, SelectedStyle selectedStyle) {
         this.name = name;
         this.picture = picture;
         this.fabricCost = fabricCost;
         this.colour = colour;
+        this.fabricSupplier = fabricSupplier;
         this.quantity = quantity;
         this.selectedStyle = selectedStyle;
     }
@@ -104,4 +109,11 @@ public class Fabric implements Serializable {
     }
 
 
+    public FabricSupplier getFabricSupplier() {
+        return fabricSupplier;
+    }
+
+    public void setFabricSupplier(FabricSupplier fabricSupplier) {
+        this.fabricSupplier = fabricSupplier;
+    }
 }
