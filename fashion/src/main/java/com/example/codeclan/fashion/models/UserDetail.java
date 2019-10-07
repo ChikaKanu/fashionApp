@@ -123,6 +123,9 @@ public class UserDetail extends Resource implements Serializable {
     }
 
     public void setUser(User user) {
+        String firstName = user.getFirstName();
+        this.setFirstName(firstName);
+        this.getFirstName();
         this.user = user;
     }
 

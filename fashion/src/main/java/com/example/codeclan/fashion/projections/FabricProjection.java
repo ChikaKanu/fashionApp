@@ -12,6 +12,6 @@ public interface FabricProjection {
     double getFabricCost();
     String getColour();
     double getQuantity();
-    FabricSupplier getSupplier();
+    FabricSupplier getFabricSupplier();
     SelectedStyle getSelectedStyle();
 }

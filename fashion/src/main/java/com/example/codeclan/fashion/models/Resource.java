@@ -16,16 +16,16 @@ public abstract class Resource {
         return firstName;
     }
 
-    public void setFirstName(User user) {
-        this.firstName = user.getFirstName();
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getSurname() {
         return surname;
     }
 
-    public void setSurname(User user) {
-        this.surname = user.getSurname();
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
-
 }

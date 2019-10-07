@@ -67,73 +67,76 @@ public class DataLoader implements ApplicationRunner {
 
         Address address1 = new Address("23 Hubby Crescent", "vfd", "EH113NU", "Edinburgh", "United Kingdom");
         addressRepository.save(address1);
-        UserDetail userDetail1 = new UserDetail("Chika", "Kanu",address1,"male");
-        userDetailRepository.save(userDetail1);
-        User user1 = new User("1", "Mary", "Ojoms", "chika@yahoo.com", "04023840928", "xthbdgr23", "customer", userDetail1, null, null);
+        User user1 = new User("1", "Chika", "Kanu", "chika@yahoo.com", "04023840928", "xthbdgr23", "customer", null,null, null);
         userRepository.save(user1);
+        UserDetail userDetail1 = new UserDetail("Okon", "Odio",address1,"male");
+        userDetail1.setUser(user1);
+        userDetailRepository.save(userDetail1);
 
+        User user2 = new User("2", "Okey", "Onkaro", "chika@yahoo.com", "04023840928", "tryhbdgr23", "customer", null, null, null);
+        userRepository.save(user2);
         Address address2 = new Address( "10 columbia", "gwaso", "EH175NU", "Edinburgh", "United Kingdom");
         addressRepository.save(address2);
         UserDetail userDetail2 = new UserDetail("Okey", "Onkaro", address2,  "female");
+        userDetail2.setUser(user2);
         userDetailRepository.save(userDetail2);
-        User user2 = new User("2", "Okey", "Onkaro", "chika@yahoo.com", "04023840928", "tryhbdgr23", "customer", userDetail2, null, null);
-        userRepository.save(user2);
 
-
-
+        User user3 = new User("3", "Jack", "Marbro", "chika@yahoo.com", "04023840928", "xthbdgr23", "customer", null, null, null);
+        userRepository.save(user3);
         Address address3 = new Address("10 Clan Crescent", "Tombol", "EH141SH", "Edinburgh", "United Kingdom");
         addressRepository.save(address3);
         UserDetail userDetail3 = new UserDetail("Jack", "Marbro",address3, "male");
+        userDetail3.setUser(user3);
         userDetailRepository.save(userDetail3);
-        User user3 = new User("3", "Jack", "Marbro", "chika@yahoo.com", "04023840928", "xthbdgr23", "customer", userDetail3, null, null);
-        userRepository.save(user3);
 
-
+        User user4 = new User("4", "Mary", "Ojoms", "chika@yahoo.com", "04023840928", "xthbdgr23", "customer", null, null, null);
+        userRepository.save(user4);
         Address address4 = new Address("50 Lan Crescent", "balwern", "EH198SH", "Edinburgh", "United Kingdom");
         addressRepository.save(address4);
-        FabricSupplier fabricSupplier11 = new FabricSupplier("Jack", "Marbro",address4, "Johny Fabrics Ltd");
+        FabricSupplier fabricSupplier11 = new FabricSupplier("Mary", "Ojoms", address4, "Johny Fabrics Ltd");
+        fabricSupplier11.setUser(user4);
         fabricSupplierRepository.save(fabricSupplier11);
-        User user4 = new User("4", "Mary", "Ojoms", "chika@yahoo.com", "04023840928", "xthbdgr23", "customer", null, null, fabricSupplier11);
-        userRepository.save(user4);
 
+        User user5 = new User("5", "Omini", "Vorous", "chika@yahoo.com", "04023840928", "xthbdgr23", "customer", null, null, null);
+        userRepository.save(user5);
         Address address6 = new Address("20 Clan Crescent", "Tombol", "EH141SH", "Edinburgh", "United Kingdom");
         addressRepository.save(address6);
         FabricSupplier fabricSupplier12 = new FabricSupplier("Omini", "Vorous",address6, "Omni Ltd");
+        fabricSupplier12.setUser(user5);
         fabricSupplierRepository.save(fabricSupplier12);
-        User user5 = new User("5", "Mary", "Ojoms", "chika@yahoo.com", "04023840928", "xthbdgr23", "customer", null, null, fabricSupplier12);
-        userRepository.save(user5);
 
+        User user6 = new User("6", "Constance", "Manor", "chika@yahoo.com", "04023840928", "xthbdgr23", "customer", null, null, null);
+        userRepository.save(user6);
         Address address5 = new Address("100 Jonom Crescent", "Jonom", "EH157SH", "Edinburgh", "United Kingdom");
         addressRepository.save(address5);
         FabricSupplier fabricSupplier13 = new FabricSupplier("Constance", "Manor",address5, "Const Ltd");
+        fabricSupplier13.setUser(user6);
         fabricSupplierRepository.save(fabricSupplier13);
-        User user6 = new User("6", "Mary", "Ojoms", "chika@yahoo.com", "04023840928", "xthbdgr23", "customer", null, null, fabricSupplier13);
-        userRepository.save(user6);
 
+        User user7 = new User("7", "John", "Sade", "chika@yahoo.com", "04023840928", "xthbdgr23", "customer", null, null, null);
+        userRepository.save(user7);
         Address address7 = new Address( "1 frow rd", null, "EH100SH", "Edinburgh", "United Kingdom");
         addressRepository.save(address7);
         Tailor tailor1 = new Tailor("John", "Sade", address7, "capita One Ltd");
+        tailor1.setUser(user7);
         tailorRepository.save(tailor1);
-        User user7 = new User("7", "Mary", "Ojoms", "chika@yahoo.com", "04023840928", "xthbdgr23", "customer", null, tailor1, null);
-        userRepository.save(user7);
 
-
-
+        User user8 = new User("8", "Ngozi", "Nwafor", "chika@yahoo.com", "04023840928", "xthbdgr23", "customer", null, null, null);
+        userRepository.save(user8);
         Address address8 = new Address("90 Crewe", "Stenhouse", "EH113ER", "Edinburgh", "United Kingdom");
         addressRepository.save(address8);
         Tailor tailor2 = new Tailor("Ngozi", "Nwafor", address8, "Crossburn Ltd");
+        tailor2.setUser(user8);
         tailorRepository.save(tailor2);
-        User user8 = new User("8", "Mary", "Ojoms", "chika@yahoo.com", "04023840928", "xthbdgr23", "customer", null, tailor2, null);
-        userRepository.save(user8);
 
-
-
+        User user9 = new User("9", "Craze", "Full", "chika@yahoo.com", "04023840928", "xthbdgr23", "customer", null, null, null);
+        userRepository.save(user9);
         Address address9 = new Address("7685 Cross way", null, "EH176PT", "Edinburgh", "United Kingdom");
         addressRepository.save(address9);
         Tailor tailor3 = new Tailor("Craze", "Full", address9, "jacko Interprise");
+        tailor3.setUser(user9);
         tailorRepository.save(tailor3);
-        User user9 = new User("9", "Mary", "Ojoms", "chika@yahoo.com", "04023840928", "xthbdgr23", "customer", null, tailor3, null);
-        userRepository.save(user9);
+
 
         Booking booking1 = new Booking(userDetail1, "Incomplete", "Awaiting supply of Buttons to complete sowing");
         bookingRepository.save(booking1);
