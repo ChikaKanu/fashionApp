@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Request from '../../helpers/request';
-import StyleDetail from './SingleStyleDetail';
+import SingleStyleDetail from './SingleStyleDetail';
 
 class SingleStyleContainer extends Component{
     constructor(props){
@@ -8,6 +8,8 @@ class SingleStyleContainer extends Component{
         this.state={
             style: null
         }
+        this.handleStyleDelete = this.handleStyleDelete.bind(this);
+        this.handleStyleEdit = this.handleStyleEdit.bind(this);
     }
 
     componentDidMount(){
@@ -17,6 +19,8 @@ class SingleStyleContainer extends Component{
         })
     }
 
+    // this function will be passed down to SingleStyleDetail component for rendering there
+// make a request to back end api to delete style based on id, then return to /styles route (StyleListContainer)
     handleStyleDelete(id){
         const request = new Request();
         request.delete('/api/styles/'+id).then(()=>{
@@ -37,7 +41,7 @@ class SingleStyleContainer extends Component{
         console.log(this.state.style)
 
         return(
-            <StyleDetail id={this.props.id} style={this.state.style}/>
+            <SingleStyleDetail id={this.props.id} style={this.state.style} handleStyleEdit = {this.handleStyleEdit} handleStyleDelete = {this.handleStyleDelete}/>
         )
     }
 

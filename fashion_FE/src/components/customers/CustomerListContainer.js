@@ -12,8 +12,8 @@ class CustomerListContainer extends Component{
 
     componentDidMount(){
         let request = new Request();
-        request.get("/api/customers").then((data) => {
-            this.setState({customers: data._embedded.customers});
+        request.get("/api/userDetails").then((data) => {
+            this.setState({customers: data._embedded.userDetails});
         });
 
     }

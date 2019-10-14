@@ -72,7 +72,7 @@ class BookingEditForm extends Component{
                     <br/>
                     <label htmlFor="totalCost">TotalCost (autofilled):</label>
                     <input readOnly type="text" id='totalCost' name="totalCost" value={this.state.totalCost} onChange={evt=>this.setState({totalCost: evt.target.value})} />
-                    <br/>  
+                    <br/>
                     <label htmlFor="remarks">Remarks:</label>
                     <input type="text" id='remarks' name="remarks" maxLength="70" value={this.state.remarks || ""} onChange={evt=>this.setState({remarks: evt.target.value})} />
                     <br/>  

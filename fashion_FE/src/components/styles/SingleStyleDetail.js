@@ -4,11 +4,11 @@ import BookingList from '../bookings/BookingList';
 const SingleStyleDetail = (props) => {
 
     const onDelete=()=>{
-        this.handleStyleDelete(props.id)
+        props.handleStyleDelete(props.id)
     }
 
     const onEdit=()=>{
-        this.handleStyleEdit(props.id)
+        props.handleStyleEdit(props.id)
     }
 
     return(
@@ -21,10 +21,10 @@ const SingleStyleDetail = (props) => {
                 <p>LabourCost: {props.style.labourCost}</p>
                 <p>Picture: {props.style.image}</p>
             </div>
-            <div className="style-item-component-details">
+            {/* <div className="style-item-component-details">
                 <h4>Associated Bookings:</h4>
                 {props.style._embedded? <BookingList bookings={props.style._embedded.bookings}/>: "Selected style has no associated booking(s)."}
-            </div>
+            </div> */}
             <button className="delete-button" onClick={onDelete}>Delete Style</button>
             <button className="edit-button" onClick={onEdit}>Edit Style</button>
         </div>

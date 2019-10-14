@@ -13,6 +13,7 @@ const Style = (props) => {
                 <p>Picture: {props.style.image}</p>
                 <p>Name: {props.style.name}</p>
                 <p>Designer: {props.style.source}</p>
+                <p>Design Cost: {props.style.labourCost}</p>
             </Link>
         </React.Fragment>
     )
