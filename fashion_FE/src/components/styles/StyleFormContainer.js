@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Request from '../../helpers/request';
 import { thisExpression } from '@babel/types';
 import StyleFormNew from './StyleFormNew';
+import Axios from "axios";
 
 class StyleFormContainer extends Component{
     constructor(props){
@@ -20,18 +21,17 @@ class StyleFormContainer extends Component{
     }
 
     handleStylePost(style){
+        console.log(style);
         const request = new Request();
         request.post('/api/styles', style).then(()=> {
             window.location = '/styles'
         });
     }
 
-
+ç
 
     render(){
         console.log(this.state.styles);
-        
-        
         return(
             <StyleFormNew styles = {this.state.styles}  handleStylePost= {this.handleStylePost}/>
         )

@@ -60,13 +60,13 @@ const StyleFormNew = (props) => {
                 <form onSubmit= {handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="name"><strong>Style Name</strong></label>
-                        <input type="text" className="form-control" id="name" placeholder="Style Name"/>
+                        <input type="text" name="name" className="form-control" id="name" placeholder="Style Name"/>
 
                         <label htmlFor="labourCost"><strong>Cost</strong></label>
-                        <input type="text" className="form-control" id="labourCost" placeholder="Style sowing cost"/>
+                        <input type="number" name= "labourCost" className="form-control" id="labourCost" placeholder="Style sowing cost"/>
 
                         <label htmlFor="source"><strong>Designer</strong></label>
-                        <input type="text" className="form-control" id="source" placeholder="Style Designer"/>
+                        <input type="text" name = "source" className="form-control" id="source" placeholder="Style Designer"/>
 
                         <label htmlFor="genderCategory"><strong>Gender Category</strong></label>
                         <select classname="custom-select custom-select-lg mb-3" name="gender" onChange={onSelectGender}>
