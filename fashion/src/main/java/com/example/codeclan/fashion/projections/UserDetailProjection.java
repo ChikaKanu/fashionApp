@@ -12,6 +12,8 @@ public interface UserDetailProjection {
     String getFirstName();
     String getSurname();
     User getUser();
+    Tailor getTailor();
+    FabricSupplier getFabricSupplier();
     Address getAddress();
     String getGender();
     double getBill();

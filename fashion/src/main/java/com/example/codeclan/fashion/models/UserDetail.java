@@ -16,8 +16,8 @@ public class UserDetail extends Resource implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "address_id")
+
+    @OneToOne(mappedBy = "userDetail", cascade = CascadeType.ALL, orphanRemoval = true)
     private Address address;
 
     @Column(name = "gender")
@@ -29,6 +29,12 @@ public class UserDetail extends Resource implements Serializable {
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToOne(mappedBy = "userDetail", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Tailor tailor;
+
+    @OneToOne(mappedBy = "userDetail", cascade = CascadeType.ALL, orphanRemoval = true)
+    private FabricSupplier fabricSupplier;
 
     @JsonIgnoreProperties("bookings")
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
@@ -45,10 +51,12 @@ public class UserDetail extends Resource implements Serializable {
     @OneToMany(mappedBy = "userDetail", fetch = FetchType.LAZY)
     private List<SelectedStyle> selectedStyles;
 
-    public UserDetail(String firstName, String surname, Address address, String gender) {
+    public UserDetail(String firstName, String surname, User user, String gender) {
         super(firstName, surname);
         this.address = address;
         this.gender = gender;
+        this.tailor = tailor;
+        this.fabricSupplier = fabricSupplier;
         this.user = user;
         this.bill = bill;
         this.bookings = new ArrayList<>();
@@ -135,5 +143,21 @@ public class UserDetail extends Resource implements Serializable {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Tailor getTailor() {
+        return tailor;
+    }
+
+    public void setTailor(Tailor tailor) {
+        this.tailor = tailor;
+    }
+
+    public FabricSupplier getFabricSupplier() {
+        return fabricSupplier;
+    }
+
+    public void setFabricSupplier(FabricSupplier fabricSupplier) {
+        this.fabricSupplier = fabricSupplier;
     }
 }

@@ -11,7 +11,7 @@ public interface TailorProjection {
     long getId();
     String getFirstName();
     String getSurname();
-    User getUser();
+    User getUserDetail();
     Address getAddress();
     String getCompanyName();
     SelectedStyle getSelectedStyle();

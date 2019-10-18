@@ -5,6 +5,8 @@ import com.example.codeclan.fashion.models.FabricSupplier;
 import com.example.codeclan.fashion.models.SelectedStyle;
 import org.springframework.data.rest.core.config.Projection;
 
+import java.util.List;
+
 @Projection(name = "embedded", types = Fabric.class)
 public interface FabricProjection {
     long getId();
@@ -13,5 +15,5 @@ public interface FabricProjection {
     String getColour();
     double getQuantity();
     FabricSupplier getFabricSupplier();
-    SelectedStyle getSelectedStyle();
+    List<SelectedStyle> getSelectedStyles();
 }

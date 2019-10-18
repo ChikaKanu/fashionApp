@@ -18,20 +18,15 @@ public class Tailor extends Resource implements Serializable{
     private SelectedStyle selectedStyle;
 
     @OneToOne
-    @JoinColumn(name = "address_id")
-    private Address address;
-
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "userDetail_id")
+    private UserDetail userDetail;
 
     public Tailor(){};
 
-    public Tailor(String firstName, String surname, Address address, String companyName) {
+    public Tailor(String firstName, String surname, String companyName) {
         super(firstName, surname);
-        this.user = user;
         this.companyName = companyName;
-        this.address = address;
+        this.userDetail = userDetail;
         this.selectedStyle = selectedStyle;
     }
 
@@ -59,19 +54,11 @@ public class Tailor extends Resource implements Serializable{
         this.id = id;
     }
 
-    public Address getAddress() {
-        return address;
+    public UserDetail getUserDetail() {
+        return userDetail;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserDetail(UserDetail userDetail) {
+        this.userDetail = userDetail;
     }
 }

@@ -1,9 +1,12 @@
 package com.example.codeclan.fashion.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "measurements")
@@ -89,8 +92,17 @@ public class Measurement implements Serializable {
     @JoinColumn(name = "selectedStyle_id")
     private SelectedStyle selectedStyle;
 
+    @JsonIgnoreProperties("measurements")
+    @ManyToMany
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(
+            joinColumns = {@JoinColumn(name = "measurement_id", updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "selectedStyle_id", updatable = false)}
+    )
+    private List<SelectedStyle> selectedStyles;
 
-    public Measurement(String sizeOwner, double bust, double underBust, double waist, double hip, double shoulder, double armLength, double neck, double bicep, double wrist, double bustHeight, double shoulderToWaistFront, double bustSeparation, double shoulderToWaistBack, double backWidth, double hipHeight, double thigh, double calf, double legLength, double waistToFloor, double neckToFloor, double totalHeight, SelectedStyle selectedStyle, UserDetail userDetail) {
+
+    public Measurement(String sizeOwner, double bust, double underBust, double waist, double hip, double shoulder, double armLength, double neck, double bicep, double wrist, double bustHeight, double shoulderToWaistFront, double bustSeparation, double shoulderToWaistBack, double backWidth, double hipHeight, double thigh, double calf, double legLength, double waistToFloor, double neckToFloor, double totalHeight, UserDetail userDetail) {
         this.sizeOwner = sizeOwner;
         this.bust = bust;
         this.underBust = underBust;
@@ -113,7 +125,7 @@ public class Measurement implements Serializable {
         this.waistToFloor = waistToFloor;
         this.neckToFloor = neckToFloor;
         this.totalHeight = totalHeight;
-        this.selectedStyle = selectedStyle;
+        this.selectedStyles = new ArrayList<>();
         this.userDetail = userDetail;
     }
 
@@ -297,19 +309,27 @@ public class Measurement implements Serializable {
         this.sizeOwner = sizeOwner;
     }
 
-    public SelectedStyle getSelectedStyle() {
-        return selectedStyle;
-    }
-
-    public void setSelectedStyle(SelectedStyle selectedStyle) {
-        this.selectedStyle = selectedStyle;
-    }
-
     public UserDetail getUserDetail() {
         return userDetail;
     }
 
     public void setUserDetail(UserDetail userDetail) {
         this.userDetail = userDetail;
+    }
+
+    public List<SelectedStyle> getSelectedStyles() {
+        return selectedStyles;
+    }
+
+    public void setSelectedStyles(List<SelectedStyle> selectedStyles) {
+        this.selectedStyles = selectedStyles;
+    }
+
+    public void addSelectedStyle(SelectedStyle selectedStyle) {
+        this.selectedStyles.add(selectedStyle);
+    }
+
+    public void removeSelectedStyle(SelectedStyle selectedStyle) {
+        this.selectedStyles.remove(selectedStyle);
     }
 }

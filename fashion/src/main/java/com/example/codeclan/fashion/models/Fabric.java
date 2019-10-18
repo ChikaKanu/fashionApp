@@ -1,9 +1,12 @@
 package com.example.codeclan.fashion.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -38,15 +41,24 @@ public class Fabric implements Serializable {
     @JoinColumn(name = "selectedStyle_id")
     private SelectedStyle selectedStyle;
 
+    @JsonIgnoreProperties("fabrics")
+    @ManyToMany
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(
+            joinColumns = {@JoinColumn(name = "fabric_id", updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "selectedStyle_id", updatable = false)}
+    )
+    private List<SelectedStyle> selectedStyles;
 
-    public Fabric(String name, String picture, double fabricCost, String colour, double quantity, FabricSupplier fabricSupplier, SelectedStyle selectedStyle) {
+
+    public Fabric(String name, String picture, double fabricCost, String colour, double quantity, FabricSupplier fabricSupplier) {
         this.name = name;
         this.picture = picture;
         this.fabricCost = fabricCost;
         this.colour = colour;
         this.fabricSupplier = fabricSupplier;
         this.quantity = quantity;
-        this.selectedStyle = selectedStyle;
+        this.selectedStyles = new ArrayList<>();
     }
 
     public Fabric(){};
@@ -100,15 +112,6 @@ public class Fabric implements Serializable {
     }
 
 
-    public SelectedStyle getSelectedStyle() {
-        return selectedStyle;
-    }
-
-    public void setSelectedStyle(SelectedStyle selectedStyle) {
-        this.selectedStyle = selectedStyle;
-    }
-
-
     public FabricSupplier getFabricSupplier() {
         return fabricSupplier;
     }
@@ -116,4 +119,21 @@ public class Fabric implements Serializable {
     public void setFabricSupplier(FabricSupplier fabricSupplier) {
         this.fabricSupplier = fabricSupplier;
     }
+
+    public List<SelectedStyle> getSelectedStyles() {
+        return selectedStyles;
+    }
+
+    public void setSelectedStyles(List<SelectedStyle> selectedStyles) {
+        this.selectedStyles = selectedStyles;
+    }
+
+    public void addSelectedStyle(SelectedStyle selectedStyle){
+        this.selectedStyles.add(selectedStyle);
+    }
+
+    public void removeSelectedStyle(SelectedStyle selectedStyle){
+        this.selectedStyles.remove(selectedStyle);
+    }
+
 }

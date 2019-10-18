@@ -20,16 +20,12 @@ public class Address {
     private String county;
     @Column(name="country")
     private String country;
-    @OneToOne(mappedBy = "address", cascade = CascadeType.ALL, orphanRemoval = true)
+
+    @OneToOne
+    @JoinColumn(name = "userDetail_id")
     private UserDetail userDetail;
 
-    @OneToOne(mappedBy = "address", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Tailor tailor;
-
-    @OneToOne(mappedBy = "address", cascade = CascadeType.ALL, orphanRemoval = true)
-    private FabricSupplier fabricSupplier;
-
-    public Address(String address1, String address2, String postcode, String county, String country) {
+    public Address(String address1, String address2, String postcode, String county, String country, UserDetail userDetail) {
         this.id = id;
         this.address1 = address1;
         this.address2 = address2;
@@ -37,8 +33,6 @@ public class Address {
         this.county = county;
         this.country = country;
         this.userDetail = userDetail;
-        this.tailor = tailor;
-        this.fabricSupplier = fabricSupplier;
     }
 
     public Address(){};
@@ -99,19 +93,4 @@ public class Address {
         this.userDetail = userDetail;
     }
 
-    public Tailor getTailor() {
-        return tailor;
-    }
-
-    public void setTailor(Tailor tailor) {
-        this.tailor = tailor;
-    }
-
-    public FabricSupplier getFabricSupplier() {
-        return fabricSupplier;
-    }
-
-    public void setFabricSupplier(FabricSupplier fabricSupplier) {
-        this.fabricSupplier = fabricSupplier;
-    }
 }

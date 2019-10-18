@@ -29,14 +29,24 @@ public class SelectedStyle implements Serializable {
     @JoinColumn(name = "userDetail_id")
     private UserDetail userDetail;
 
-    @JsonIgnoreProperties("fabrics")
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-    @OneToMany(mappedBy = "selectedStyle", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("selectedStyles")
+    @ManyToMany
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(
+            name = "fabrics_selectedStyles",
+            joinColumns = {@JoinColumn(name = "selectedStyle_id", updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name="fabric_id", updatable = false)}
+    )
     private List<Fabric> fabrics;
 
-    @JsonIgnoreProperties("measurements")
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-    @OneToMany(mappedBy = "selectedStyle", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("selectedStyles")
+    @ManyToMany
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(
+            name = "measurements_selectedStyles",
+            joinColumns = {@JoinColumn(name = "selectedStyle_id", updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name="measurement_id", updatable = false)}
+    )
     private List<Measurement> measurements;
 
     @JsonIgnoreProperties("userDetails")

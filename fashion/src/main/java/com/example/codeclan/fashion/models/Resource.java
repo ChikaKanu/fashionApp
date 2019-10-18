@@ -1,5 +1,6 @@
 package com.example.codeclan.fashion.models;
 
+
 public abstract class Resource {
 
     private String firstName;

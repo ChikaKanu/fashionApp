@@ -10,7 +10,7 @@ import org.springframework.data.rest.core.config.Projection;
 public interface FabricSupplierProjection {
     String getFirstName();
     String getSurname();
-    User getUser();
+    User getUserDetail();
     Address getAddress();
     String getCompanyName();
     Fabric getFabric();

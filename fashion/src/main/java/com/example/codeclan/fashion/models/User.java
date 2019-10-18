@@ -5,29 +5,31 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class User {
+@Table(name = "users")
+public class User implements Serializable {
 
     @Id
     private String id;
+
     private String firstName;
+
     private String surname;
+
     private String email;
+
     private String phoneNumber;
+
     private String password;
+
     private String accessGroup;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private UserDetail userDetail;
-
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Tailor tailor;
-
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private FabricSupplier fabricSupplier;
 
 }

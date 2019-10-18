@@ -18,17 +18,12 @@ public class FabricSupplier extends Resource implements Serializable {
     private Fabric fabric;
 
     @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "userDetail_id")
+    private UserDetail userDetail;
 
-    @OneToOne
-    @JoinColumn(name = "address_id")
-    private Address address;
-
-    public FabricSupplier(String firstName, String surname, Address address, String companyName) {
+    public FabricSupplier(String firstName, String surname, String companyName) {
         super(firstName, surname);
-        this.user = user;
-        this.address = address;
+        this.userDetail = userDetail;
         this.companyName = companyName;
         this.fabric = fabric;
 
@@ -60,19 +55,12 @@ public class FabricSupplier extends Resource implements Serializable {
         this.fabric = fabric;
     }
 
-    public Address getAddress() {
-        return address;
+    public UserDetail getUserDetail() {
+        return userDetail;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setUserDetail(UserDetail userDetail) {
+        this.userDetail = userDetail;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }
